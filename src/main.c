@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2023/12/16 19:13:47 by ishenriq         ###   ########.org.br   */
+/*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
+/*   Updated: 2023/12/16 18:58:21 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <string.h>
-# include <math.h>
-# include "../lib/MLX42/include/MLX42/MLX42.h"
-# include "../lib/libft/libft.h"
-# include "../lib/printf/ft_printf.h"
-
-#endif
+int	main(void)
+{
+	//argumento do mapa
+	//argumento do layout
+	
+	//map = check_map
+	//init_game(map, layout);
+	mlx_init(720, 480, "teste", true);
+	//mlx_new_window(mlx_init(720, 480, "teste", true), 600, 300, "teste");
+	return (0);
+}
