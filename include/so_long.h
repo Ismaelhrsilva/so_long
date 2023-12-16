@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2023/12/16 19:13:47 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2023/12/16 19:43:02 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,15 @@
 # include "../lib/libft/libft.h"
 # include "../lib/printf/ft_printf.h"
 
+# define WIDTH 720
+# define HEIGHT 480
+# define SIZE 36
+
+typedef struct s_game
+{
+	int	width;
+	int	height;
+	void	*id;
+	char	**map;
+}	t_game;
 #endif
