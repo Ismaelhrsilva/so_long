@@ -6,18 +6,20 @@
 #    By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 20:08:54 by ishenriq          #+#    #+#              #
-#    Updated: 2023/12/16 19:22:00 by ishenriq         ###   ########.org.br    #
+#    Updated: 2024/01/03 21:55:24 by ishenriq         ###   ########.org.br    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= so_long
-CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g3
 CC	:= cc
 LIBMLX	:= ./lib/MLX42
 PRINTF	:= ./lib/printf
 LIBFT	:= ./lib/libft
+GNL	:= ./lib/gnl
 
-HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT) -I $(PRINTF) $(LIBS)
+HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT) -I $(PRINTF) $(LIBS) -I $(GNL)
+
 
 LIBS 	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT)/libft.a \
 	-lm $(PRINTF)/libftprintf.a
