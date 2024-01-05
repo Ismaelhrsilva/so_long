@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/03 19:31:30 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/05 20:34:28 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,7 @@ typedef struct s_game
 	void	*id;
 	char	**map;
 }	t_game;
+
+t_game	*init_game(void);
+
 #endif

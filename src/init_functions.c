@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.h                                              :+:      :+:    :+:   */
+/*   init_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 19:44:51 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/05 20:28:44 by ishenriq         ###   ########.org.br   */
+/*   Created: 2024/01/05 19:53:14 by ishenriq          #+#    #+#             */
+/*   Updated: 2024/01/05 19:58:19 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_H
-# define MAP_H
+#include "so_long.h"
+#include "map.h"
 
-# include "../lib/libft/gnl/get_next_line.h"
-# include "../lib/libft/libft.h"
-# include "../lib/printf/ft_printf.h"
-
-typedef struct s_map
+t_game	*init_game(void)
 {
-	int	nrow;
-	int	ncol;
-	int	nexit;
-	int	nplayer;
-	int	ncollect;
-	char	*path_ber;
-	char	**build_map;
-}	t_map;
+	static t_game	game;
+	return (&game);
+}
 
-t_map	*init_map(void);
-void	build_matrix_map(t_map *map);
-void	read_map(char **ber, t_map *map);
-#endif
-
+t_map	*init_map(void)
+{
+	static t_map map;
+	return (&map);
+}
