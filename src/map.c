@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/05 20:35:08 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/05 21:01:54 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ void	build_matrix_map(t_map *map)
 	char **build_map;
 	int	fd;
 	int	i;
+	char	*gnl;
 
 	i = 0;
 	fd = open(map->path_ber, O_RDONLY);
-	build_map = ft_calloc((map->nrow + 1) , sizeof(char));
+	build_map = ft_calloc((map->nrow) , sizeof(char));
 	if (!build_map)
 		return ;
 	while (i <= map->nrow)
@@ -29,9 +30,10 @@ void	build_matrix_map(t_map *map)
 		build_map[i] = ft_calloc((map->ncol + 1) , sizeof(char));
 		if(!build_map[i])
 			return ;
-		build_map[i] = ft_memcpy(build_map[i], get_next_line(fd), map->ncol);
-		i++;
+		gnl = get_next_line(fd);
+		build_map[i] = ft_memcpy(build_map[i], gnl, map->ncol);
 		ft_printf("%s", build_map[i]);
+		i++;
 	}
 	map->build_map = build_map;
 }
@@ -64,6 +66,5 @@ void	read_map(char **ber, t_map *map)
 			map->nrow++;
 		i++;
 	}
-	ft_printf("%d\n", map->ncol);
-		ft_printf("%d\n", map->nrow);
+	build_matrix_map(map);
 }

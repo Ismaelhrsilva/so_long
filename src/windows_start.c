@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/05 20:27:44 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/05 20:39:28 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	map = init_map();
+	map->path_ber = argv[1];
 	read_map(&argv[1], map);
 	mlx = mlx_init(WIDTH, HEIGHT, "So_Long", true);
 	if (!mlx)
