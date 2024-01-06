@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/05 20:34:28 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/06 17:58:50 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,36 @@
 # define WIDTH 720
 # define HEIGHT 480
 # define SIZE 36
+# define BACKGROUND "textures/background.png"
+# define EARTH "textures/earth.png"
+# define ROCK "textures/rock.png"
+# define ROCKET "textures/rocket.png" 
 
 typedef struct s_game
 {
+	mlx_t	*mlx;
+	void	*window;
 	int	width;
 	int	height;
 	void	*id;
-	char	**map;
+	//char	**map;
 }	t_game;
 
+typedef struct s_image
+{
+	void	*background;
+	void	*earth;
+	void	*rock;
+	void	*rocket;
+	void	*background_tex;
+	void	*earth_tex;
+	void	*rock_tex;
+	void	*rocket_tex;
+}	t_image;
+
+
 t_game	*init_game(void);
+t_image	*init_image(void);
+void	put_image(t_game *game);
 
 #endif
