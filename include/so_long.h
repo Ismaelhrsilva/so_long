@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/06 17:58:50 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/06 19:46:33 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@
 # include "../lib/libft/libft.h"
 # include "../lib/printf/ft_printf.h"
 
-# define WIDTH 720
-# define HEIGHT 480
-# define SIZE 36
+# define WIDTH 800
+# define HEIGHT 800
 # define BACKGROUND "textures/background.png"
 # define EARTH "textures/earth.png"
 # define ROCK "textures/rock.png"

@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/06 19:06:34 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/06 19:49:16 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void	put_image(t_game *game)
 	image->rocket = mlx_texture_to_image(game->mlx, image->rocket_tex);
 	if (!image->background)
 		return ;
-
-	if (mlx_image_to_window(game->mlx, image->background, 0, 0))
+	
+	mlx_resize_image(image->background, 100, 100);
+	if (mlx_image_to_window(game->mlx, image->background, 700, 0))
 		return ;
 }
 
@@ -42,7 +43,6 @@ void	put_image(t_game *game)
 
 int	main(int argc, char **argv)
 {
-	//mlx_image_t*	img;
 	t_game	*game;
 	t_map	*map;
 
@@ -56,10 +56,6 @@ int	main(int argc, char **argv)
 	game->mlx = mlx_init(WIDTH, HEIGHT, "So_Long", true);
 	if (!game->mlx)
 		return (0);
-
-	//img = mlx_new_image(game->mlx, WIDTH, HEIGHT);
-	//if (!img || (mlx_image_to_window(game->mlx, img, 0, 0) < 0))
-	//	return (0);
 
 	put_image(game);
 	mlx_loop(game->mlx);
