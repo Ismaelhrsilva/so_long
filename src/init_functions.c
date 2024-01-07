@@ -6,12 +6,11 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 19:53:14 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/06 16:17:42 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/06 20:45:07 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "map.h"
 
 t_game	*init_game(void)
 {

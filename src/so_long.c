@@ -6,14 +6,38 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/06 19:49:16 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/06 21:05:50 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "map.h"
 
-void	put_image(t_game *game)
+void	put_image_window(t_image *image, t_game	*game, t_map *map)
+{
+	int	row;
+	int	col;
+	int	len_width;
+	int	len_height;
+
+	row = 0;
+	col = 0;
+	len_width = WIDTH / map->ncol;
+	len_height = HEIGHT / map->nrow;
+	while (row <= map->nrow)
+	{
+		while (col <= map->ncol)
+		{
+			//if (map->build_map[row][col] == 1)
+			if (1)
+				mlx_image_to_window(game->mlx, image->background,
+						(row * len_width) , (col * len_height));
+			col++;
+		}
+		row++;
+	}
+}
+
+void	put_image(t_game *game, t_map *map)
 {
 	t_image	*image;
 
@@ -33,9 +57,12 @@ void	put_image(t_game *game)
 	if (!image->background)
 		return ;
 	
-	mlx_resize_image(image->background, 100, 100);
-	if (mlx_image_to_window(game->mlx, image->background, 700, 0))
-		return ;
+	mlx_resize_image(image->background, (WIDTH / map->nrow), (HEIGHT / map->ncol));
+	mlx_resize_image(image->earth, (WIDTH / map->nrow), (HEIGHT / map->ncol));
+	mlx_resize_image(image->rock, (WIDTH / map->nrow), (HEIGHT / map->ncol));
+	mlx_resize_image(image->rocket, (WIDTH / map->nrow), (HEIGHT / map->ncol));
+
+	put_image_window(image, game, map);
 }
 
 
@@ -57,7 +84,7 @@ int	main(int argc, char **argv)
 	if (!game->mlx)
 		return (0);
 
-	put_image(game);
+	put_image(game, map);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 	return (0);

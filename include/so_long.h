@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/06 19:46:33 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/06 20:49:10 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include "../lib/libft/libft.h"
 # include "../lib/printf/ft_printf.h"
+# include "so_long.h"
+# include "../lib/libft/gnl/get_next_line.h"
 
-# define WIDTH 800
-# define HEIGHT 800
+# define WIDTH 600 
+# define HEIGHT 600
 # define BACKGROUND "textures/background.png"
 # define EARTH "textures/earth.png"
 # define ROCK "textures/rock.png"
@@ -52,9 +54,22 @@ typedef struct s_image
 	void	*rocket_tex;
 }	t_image;
 
+typedef struct s_map
+{
+	int	nrow;
+	int	ncol;
+	int	nexit;
+	int	nplayer;
+	int	ncollect;
+	char	*path_ber;
+	char	**build_map;
+}	t_map;
 
 t_game	*init_game(void);
 t_image	*init_image(void);
-void	put_image(t_game *game);
+void	put_image(t_game *game, t_map *map);
+t_map	*init_map(void);
+void	build_matrix_map(t_map *map);
+void	read_map(char **ber, t_map *map);
 
 #endif

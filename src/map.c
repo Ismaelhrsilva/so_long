@@ -6,11 +6,10 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/06 14:56:45 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/06 20:45:16 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
 #include "so_long.h"
 
 void	build_matrix_map(t_map *map)
