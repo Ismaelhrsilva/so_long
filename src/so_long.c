@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/06 21:05:50 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/08 20:07:28 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@ void	put_image_window(t_image *image, t_game	*game, t_map *map)
 		row++;
 	}
 }
+void	resize_image(t_image *image, t_map *map)
+{
+	mlx_resize_image(image->background, map->len_min, map->len_min);
+	mlx_resize_image(image->earth , map->len_min, map->len_min);
+	mlx_resize_image(image->rock , map->len_min, map->len_min);
+	mlx_resize_image(image->rocket , map->len_min, map->len_min);
+}
 
 void	put_image(t_game *game, t_map *map)
 {
@@ -56,15 +63,9 @@ void	put_image(t_game *game, t_map *map)
 	image->rocket = mlx_texture_to_image(game->mlx, image->rocket_tex);
 	if (!image->background)
 		return ;
-	
-	mlx_resize_image(image->background, (WIDTH / map->nrow), (HEIGHT / map->ncol));
-	mlx_resize_image(image->earth, (WIDTH / map->nrow), (HEIGHT / map->ncol));
-	mlx_resize_image(image->rock, (WIDTH / map->nrow), (HEIGHT / map->ncol));
-	mlx_resize_image(image->rocket, (WIDTH / map->nrow), (HEIGHT / map->ncol));
-
+	resize_image(image, map);
 	put_image_window(image, game, map);
 }
-
 
 
 

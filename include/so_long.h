@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/06 20:49:10 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/08 19:24:09 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_map
 	int	ncollect;
 	char	*path_ber;
 	char	**build_map;
+	int	len_min;
 }	t_map;
 
 t_game	*init_game(void);
@@ -71,5 +72,6 @@ void	put_image(t_game *game, t_map *map);
 t_map	*init_map(void);
 void	build_matrix_map(t_map *map);
 void	read_map(char **ber, t_map *map);
+void	resize_image(t_image *image, t_map *map);
 
 #endif
