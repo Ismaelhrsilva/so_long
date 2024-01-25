@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/22 22:36:14 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/25 15:00:34 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ void	put_image_window(t_image *image, t_game	*game, t_map *map)
 	int	len_height;
 
 	row = 0;
-
-	//len_width = WIDTH / map->ncol;
-	//len_height = HEIGHT / map->nrow;
 	while (row < map->nrow)
 	{
 		col = 0;
 		while (col < map->ncol)
 		{
-			//if (map->build_map[row][col] == 1)
-			if (1)
-				mlx_image_to_window(game->mlx, image->earth,
-						row * map->len_image , col * map->len_image);
+			mlx_image_to_window(game->mlx, image->mapb, col *130, row *130);
+			if (map->build_map[row][col] == '1')
+				mlx_image_to_window(game->mlx, image->rock, col * 130 , row * 130);
+			if (map->build_map[row][col] == 'C')
+				mlx_image_to_window(game->mlx, image->earth, col * 130 , row * 130);
+			if (map->build_map[row][col] == 'P')
+				mlx_image_to_window(game->mlx, image->rocket, col * 130 , row * 130);
 			col++;
 		}
 		row++;
@@ -40,10 +40,10 @@ void	put_image_window(t_image *image, t_game	*game, t_map *map)
 
 void	resize_image(t_image *image, t_map *map)
 {
-	mlx_resize_image(image->mapb, map->len_image, map->len_image);
-	mlx_resize_image(image->earth , map->len_image, map->len_image);
-	mlx_resize_image(image->rock , map->len_image, map->len_image);
-	mlx_resize_image(image->rocket , map->len_image, map->len_image);
+	mlx_resize_image(image->mapb, 130, 130);
+	mlx_resize_image(image->earth, 130, 130);
+	mlx_resize_image(image->rock , 130, 130);
+	mlx_resize_image(image->rocket , 130, 130);
 }
 
 void	put_image(t_game *game, t_map *map, t_image *image)
@@ -61,10 +61,10 @@ void	put_image(t_game *game, t_map *map, t_image *image)
 	image->rocket = mlx_texture_to_image(game->mlx, image->rocket_tex);
 	if (!image->mapb)
 		return ;
-	if (map->ncol >= map->nrow)
-		map->len_image = HEIGHT / map->nrow;
-	else
-		map->len_image = WIDTH/ map->ncol;
+	//if (map->ncol >= map->nrow)
+	//	map->len_image = HEIGHT / map->nrow;
+	//else
+	//	map->len_image = WIDTH/ map->ncol;
 	resize_image(image, map);
 	put_image_window(image, game, map);
 }
@@ -84,7 +84,7 @@ int	main(int argc, char **argv)
 	image = init_image();
 	map->path_ber = argv[1];
 	read_map(&argv[1], map);
-	game->mlx = mlx_init(WIDTH, HEIGHT, "So_Long", true);
+	game->mlx = mlx_init(130 * map->ncol, 130 * map->nrow, "So_Long", true);
 	if (!game->mlx)
 		return (0);
 

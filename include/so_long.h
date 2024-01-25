@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/22 21:45:45 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/25 14:33:33 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # include "so_long.h"
 # include "../lib/libft/gnl/get_next_line.h"
 
-# define WIDTH 1200 
-# define HEIGHT 780
+# define WIDTH 1600 
+# define HEIGHT 1200
 # define EARTH "textures/earth.png"
 # define MAPB "textures/mapb.png"
 # define ROCK "textures/rock.png"
