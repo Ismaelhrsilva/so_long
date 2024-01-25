@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/25 14:33:33 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/25 15:20:13 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define MAPB "textures/mapb.png"
 # define ROCK "textures/rock.png"
 # define ROCKET "textures/rocket.png" 
+# define COLLECT "textures/collectible.png"
 
 typedef struct s_game
 {
@@ -48,10 +49,12 @@ typedef struct s_image
 	mlx_image_t	*earth;
 	mlx_image_t	*rock;
 	mlx_image_t	*rocket;
+	mlx_image_t	*collect;
 	mlx_texture_t	*mapb_tex;
 	mlx_texture_t	*earth_tex;
 	mlx_texture_t	*rock_tex;
 	mlx_texture_t	*rocket_tex;
+	mlx_texture_t	*collect_tex;
 }	t_image;
 
 typedef struct s_map

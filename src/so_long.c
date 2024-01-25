@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/25 15:00:34 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/25 15:18:50 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,37 @@ void	put_image_window(t_image *image, t_game	*game, t_map *map)
 			if (map->build_map[row][col] == '1')
 				mlx_image_to_window(game->mlx, image->rock, col * 130 , row * 130);
 			if (map->build_map[row][col] == 'C')
-				mlx_image_to_window(game->mlx, image->earth, col * 130 , row * 130);
+				mlx_image_to_window(game->mlx, image->collect, col * 130 , row * 130);
 			if (map->build_map[row][col] == 'P')
 				mlx_image_to_window(game->mlx, image->rocket, col * 130 , row * 130);
+			if (map->build_map[row][col] == 'E')
+				mlx_image_to_window(game->mlx, image->earth, col * 130 , row * 130);
 			col++;
 		}
 		row++;
 	}
 }
 
+/*
+void	construct_image(t_image *image, int lenght)
+{
+	
+
+
+}
+*/
+
+
+
+
+
 void	resize_image(t_image *image, t_map *map)
 {
 	mlx_resize_image(image->mapb, 130, 130);
 	mlx_resize_image(image->earth, 130, 130);
 	mlx_resize_image(image->rock , 130, 130);
-	mlx_resize_image(image->rocket , 130, 130);
+	mlx_resize_image(image->rocket , 130, 130);	
+	mlx_resize_image(image->collect , 130, 130);	
 }
 
 void	put_image(t_game *game, t_map *map, t_image *image)
@@ -52,19 +68,14 @@ void	put_image(t_game *game, t_map *map, t_image *image)
 	image->mapb_tex = mlx_load_png(MAPB);
 	image->rock_tex = mlx_load_png(ROCK);
 	image->rocket_tex = mlx_load_png(ROCKET);
-	if (!image->mapb_tex)
-		return ;
+	image->collect_tex = mlx_load_png(COLLECT);
 	
 	image->earth = mlx_texture_to_image(game->mlx, image->earth_tex);
 	image->mapb = mlx_texture_to_image(game->mlx, image->mapb_tex);
 	image->rock = mlx_texture_to_image(game->mlx, image->rock_tex);
 	image->rocket = mlx_texture_to_image(game->mlx, image->rocket_tex);
-	if (!image->mapb)
-		return ;
-	//if (map->ncol >= map->nrow)
-	//	map->len_image = HEIGHT / map->nrow;
-	//else
-	//	map->len_image = WIDTH/ map->ncol;
+	image->collect = mlx_texture_to_image(game->mlx, image->collect_tex);
+
 	resize_image(image, map);
 	put_image_window(image, game, map);
 }
