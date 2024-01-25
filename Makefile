@@ -6,12 +6,12 @@
 #    By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 20:08:54 by ishenriq          #+#    #+#              #
-#    Updated: 2024/01/04 19:27:02 by ishenriq         ###   ########.org.br    #
+#    Updated: 2024/01/22 18:35:02 by ishenriq         ###   ########.org.br    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= so_long
-CFLAGS	:= -O0 -Wextra -Wall -Werror -Wunreachable-code -g3
+CFLAGS	:= -g3 -O3
 #CFLAGS	:= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g3
 CC	:= cc
 LIBMLX	:= ./lib/MLX42

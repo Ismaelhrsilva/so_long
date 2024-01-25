@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/08 20:20:23 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/22 21:45:45 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 # include "so_long.h"
 # include "../lib/libft/gnl/get_next_line.h"
 
-# define WIDTH 600 
-# define HEIGHT 600
-# define BACKGROUND "textures/background.png"
+# define WIDTH 1200 
+# define HEIGHT 780
 # define EARTH "textures/earth.png"
+# define MAPB "textures/mapb.png"
 # define ROCK "textures/rock.png"
 # define ROCKET "textures/rocket.png" 
 
@@ -44,14 +44,14 @@ typedef struct s_game
 
 typedef struct s_image
 {
-	void	*background;
-	void	*earth;
-	void	*rock;
-	void	*rocket;
-	void	*background_tex;
-	void	*earth_tex;
-	void	*rock_tex;
-	void	*rocket_tex;
+	mlx_image_t	*mapb;
+	mlx_image_t	*earth;
+	mlx_image_t	*rock;
+	mlx_image_t	*rocket;
+	mlx_texture_t	*mapb_tex;
+	mlx_texture_t	*earth_tex;
+	mlx_texture_t	*rock_tex;
+	mlx_texture_t	*rocket_tex;
 }	t_image;
 
 typedef struct s_map
