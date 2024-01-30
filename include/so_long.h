@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/30 17:57:32 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/30 19:25:19 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,6 @@
 # define ROCKET "textures/rocket.png" 
 # define COLLECT "textures/collectible.png"
 
-typedef struct s_game
-{
-	mlx_t	*mlx;
-	void	*window;
-	int	width;
-	int	height;
-	void	*id;
-}	t_game;
 
 typedef struct s_image
 {
@@ -71,9 +63,20 @@ typedef struct s_map
 	int	len_image;
 }	t_map;
 
+typedef struct s_game
+{
+	mlx_t	*mlx;
+	void	*window;
+	int	width;
+	int	height;
+	void	*id;
+	t_image	*image;
+}	t_game;
+
 t_game	*init_game(void);
 t_image	*init_image(void);
 t_map	*init_map(void);
+
 void	read_map(char **ber, t_map *map);
 void	build_matrix_map(t_map *map);
 void	put_image(t_game *game, t_map *map, t_image *image);
@@ -83,8 +86,7 @@ void	construct_image_mapb(t_game *game, t_image *image);
 void	construct_image_rock(t_game *game, t_image *image);
 void	construct_image_rocket(t_game *game, t_image *image);
 void	construct_image_collect(t_game *game, t_image *image);
-//void ft_hook(void* param);
-void ft_hook(t_game *game, t_image *image);
+void ft_hook(mlx_key_data_t keydata, void* param);
 
 
 #endif

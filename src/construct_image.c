@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/25 15:38:02 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/30 19:37:02 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	construct_image_mapb(t_game *game, t_image *image)
 {
 	image->mapb_tex = mlx_load_png(MAPB);
 	image->mapb = mlx_texture_to_image(game->mlx, image->mapb_tex);
-	mlx_resize_image(image->mapb, 130, 130);
+	mlx_resize_image(image->mapb, 130 * 13, 130 * 5);
 }
 
 
