@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/25 15:34:39 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/30 17:57:32 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 # define WIDTH 1600 
 # define HEIGHT 1200
+# define SIZE 130
 # define EARTH "textures/earth.png"
 # define MAPB "textures/mapb.png"
 # define ROCK "textures/rock.png"
@@ -40,7 +41,6 @@ typedef struct s_game
 	int	width;
 	int	height;
 	void	*id;
-	//char	**map;
 }	t_game;
 
 typedef struct s_image
@@ -63,6 +63,8 @@ typedef struct s_map
 	int	ncol;
 	int	nexit;
 	int	nplayer;
+	int	x_player;
+	int	y_player;
 	int	ncollect;
 	char	*path_ber;
 	char	**build_map;
@@ -81,5 +83,8 @@ void	construct_image_mapb(t_game *game, t_image *image);
 void	construct_image_rock(t_game *game, t_image *image);
 void	construct_image_rocket(t_game *game, t_image *image);
 void	construct_image_collect(t_game *game, t_image *image);
+//void ft_hook(void* param);
+void ft_hook(t_game *game, t_image *image);
+
 
 #endif
