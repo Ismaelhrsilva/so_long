@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/31 20:37:47 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/31 20:54:16 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,45 +17,30 @@ static int	position_validation(t_main *main, int x, int y)
 {
 	int 	i;
 	int	j;
-
+	int	signal;
 
 	j = main->map->x_player;
 	i = main->map->y_player;
-	if (x == 0 && y < 0)
+
+	if (x > 0 || y > 0)
+		signal = 1;
+	else
+		signal = -1;
+	if ((x == 0 && y < 0) || (x == 0 && y > 0))
 	{
-		if(!ft_memchr("1", main->map->build_map[i - 1][j], 1))
+		if(!ft_memchr("1", main->map->build_map[i + signal][j], 1))
 		{
-			main->map->y_player--;
+			main->map->y_player = main->map->y_player + signal;
 			return (1);
 		}
 		else
 			return (0);
 	}
-	else if (x == 0 && y > 0)
+	else if ((x > 0 && y == 0) || (x < 0 && y == 0))
 	{
-		if(!ft_memchr("1", main->map->build_map[i + 1][j], 1))
+		if(!ft_memchr("1", main->map->build_map[i][j + signal], 1))
 		{
-			main->map->y_player++;
-			return (1);
-		}
-		else
-			return (0);
-	}
-	else if (x < 0 && y == 0)
-	{
-		if(!ft_memchr("1", main->map->build_map[i][j - 1], 1))
-		{
-			main->map->x_player--;
-			return (1);
-		}
-		else
-			return (0);
-	}
-	else if (x > 0 && y == 0)
-	{
-		if(!ft_memchr("1", main->map->build_map[i][j + 1], 1))
-		{
-			main->map->x_player++;
+			main->map->x_player = main->map->x_player + signal;
 			return (1);
 		}
 		else
