@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/30 19:36:00 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/31 18:36:32 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	put_image_window(t_image *image, t_game	*game, t_map *map)
 	int	col;
 
 	row = 0;
-	mlx_image_to_window(game->mlx, image->mapb, col *SIZE, row *SIZE);
+	mlx_image_to_window(game->mlx, image->mapb, 0, 0);
 	while (row < map->nrow)
 	{
 		col = 0;
@@ -32,7 +32,6 @@ void	put_image_window(t_image *image, t_game	*game, t_map *map)
 				mlx_image_to_window(game->mlx, image->earth, col * SIZE , row * SIZE);
 				if (map->build_map[row][col] == 'P')
 				{	
-					mlx_image_to_window(game->mlx, image->rocket, col * SIZE , row * SIZE);
 					map->x_player = col;
 					map->y_player = row;
 				}
@@ -40,6 +39,8 @@ void	put_image_window(t_image *image, t_game	*game, t_map *map)
 		}
 		row++;
 	}
+	mlx_image_to_window(game->mlx, image->rocket, map->x_player * SIZE , map->y_player * SIZE);
+
 }
 
 void	put_image(t_game *game, t_map *map, t_image *image)
@@ -55,22 +56,25 @@ void	put_image(t_game *game, t_map *map, t_image *image)
 
 int	main(int argc, char **argv)
 {
-	t_game	*game;
-	t_map	*map;
+	t_main	*main;
 
 	if (argc != 2)
 		return (0);
-	map = init_map();
-	game = init_game();
-	game->image = init_image();
-	map->path_ber = argv[1];
-	read_map(&argv[1], map);
-	game->mlx = mlx_init(SIZE * map->ncol, SIZE * map->nrow, "So_Long", true); 
-	if (!game->mlx)
+	main = init_main();
+
+
+	main->map = init_map();
+	main->game = init_game();
+	main->image = init_image();
+	main->map->path_ber = argv[1];
+	read_map(&argv[1], main->map);
+	main->game->mlx = mlx_init(SIZE * main->map->ncol, SIZE * main->map->nrow, "So_Long", true); 
+	//game->mlx = mlx_init(1920, 1080, "So_Long", true); 
+	if (!main->game->mlx)
 		return (0);
-	put_image(game, map, game->image);
-	mlx_key_hook(game->mlx, &ft_hook, game);
-	mlx_loop(game->mlx);
-	mlx_terminate(game->mlx);
+	put_image(main->game, main->map, main->image);
+	mlx_key_hook(main->game->mlx, &ft_hook, main);
+	mlx_loop(main->game->mlx);
+	mlx_terminate(main->game->mlx);
 	return (0);
 }

@@ -6,29 +6,35 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/30 19:35:38 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/31 18:26:35 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	step(t_game *game, int x, int y)
+
+//static void	rocket_position()
+
+
+
+
+static void	step(t_main *main, int x, int y)
 {
-	game->image->rocket->instances[0].y += y;
-	game->image->rocket->instances[0].x += x;
+	main->image->rocket->instances[0].y += y;
+	main->image->rocket->instances[0].x += x;
 }
 
-void ft_hook(mlx_key_data_t keydata, void* param)
+void	ft_hook(mlx_key_data_t keydata, void* param)
 {
-	t_game	*game;
+	t_main	*main;
 
-	game = (t_game *) param;
+	main = (t_main *) param;
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
-		step(game, 0, -SIZE);
+		step(main, 0, -SIZE);
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
-		step(game, 0, SIZE);
+		step(main, 0, SIZE);
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
-		step(game, -SIZE, 0);
+		step(main, -SIZE, 0);
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
-		step(game, SIZE, 0);
+		step(main, SIZE, 0);
 }

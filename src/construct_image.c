@@ -6,12 +6,11 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/30 19:37:02 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/31 18:32:22 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 void	construct_image_earth(t_game *game, t_image *image)
 {
@@ -20,14 +19,12 @@ void	construct_image_earth(t_game *game, t_image *image)
 	mlx_resize_image(image->earth, 130, 130);
 }
 
-
 void	construct_image_mapb(t_game *game, t_image *image)
 {
 	image->mapb_tex = mlx_load_png(MAPB);
 	image->mapb = mlx_texture_to_image(game->mlx, image->mapb_tex);
-	mlx_resize_image(image->mapb, 130 * 13, 130 * 5);
+	mlx_resize_image(image->mapb, WIDTH, HEIGHT);
 }
-
 
 void	construct_image_rock(t_game *game, t_image *image)
 {
@@ -35,7 +32,6 @@ void	construct_image_rock(t_game *game, t_image *image)
 	image->rock = mlx_texture_to_image(game->mlx, image->rock_tex);
 	mlx_resize_image(image->rock, 130, 130);
 }
-
 
 void	construct_image_rocket(t_game *game, t_image *image)
 {

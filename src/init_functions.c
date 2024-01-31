@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 19:53:14 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/30 19:06:14 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/31 18:23:27 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,10 @@ t_image	*init_image(void)
 {
 	static t_image	image;
 	return (&image);
+}
+
+t_main	*init_main(void)
+{
+	static t_main	main;
+	return (&main);
 }

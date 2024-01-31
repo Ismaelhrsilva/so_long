@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/30 19:25:19 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/31 18:30:55 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # include "so_long.h"
 # include "../lib/libft/gnl/get_next_line.h"
 
-# define WIDTH 1600 
-# define HEIGHT 1200
+# define WIDTH 1920 
+# define HEIGHT 1080
 # define SIZE 130
 # define EARTH "textures/earth.png"
 # define MAPB "textures/mapb.png"
@@ -70,12 +70,21 @@ typedef struct s_game
 	int	width;
 	int	height;
 	void	*id;
-	t_image	*image;
 }	t_game;
+
+typedef struct s_main
+{
+	t_image	*image;
+	t_map	*map;
+	t_game	*game;
+}	t_main;
+
+
 
 t_game	*init_game(void);
 t_image	*init_image(void);
 t_map	*init_map(void);
+t_main	*init_main(void);
 
 void	read_map(char **ber, t_map *map);
 void	build_matrix_map(t_map *map);
