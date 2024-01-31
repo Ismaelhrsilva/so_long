@@ -6,22 +6,74 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/31 18:45:51 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/01/31 20:37:47 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 
-//static void	rocket_position()
+static int	position_validation(t_main *main, int x, int y)
+{
+	int 	i;
+	int	j;
 
 
+	j = main->map->x_player;
+	i = main->map->y_player;
+	if (x == 0 && y < 0)
+	{
+		if(!ft_memchr("1", main->map->build_map[i - 1][j], 1))
+		{
+			main->map->y_player--;
+			return (1);
+		}
+		else
+			return (0);
+	}
+	else if (x == 0 && y > 0)
+	{
+		if(!ft_memchr("1", main->map->build_map[i + 1][j], 1))
+		{
+			main->map->y_player++;
+			return (1);
+		}
+		else
+			return (0);
+	}
+	else if (x < 0 && y == 0)
+	{
+		if(!ft_memchr("1", main->map->build_map[i][j - 1], 1))
+		{
+			main->map->x_player--;
+			return (1);
+		}
+		else
+			return (0);
+	}
+	else if (x > 0 && y == 0)
+	{
+		if(!ft_memchr("1", main->map->build_map[i][j + 1], 1))
+		{
+			main->map->x_player++;
+			return (1);
+		}
+		else
+			return (0);
+	}
+	else
+		return (0);
+}
 
 
 static void	step(t_main *main, int x, int y)
 {
-	main->image->rocket->instances[0].y += y;
-	main->image->rocket->instances[0].x += x;
+	ft_printf("Linha: %d, Coluna: %d\n", main->map->y_player, main->map->x_player);
+	if(position_validation(main, x, y))
+	{
+		main->image->rocket->instances[0].y += y;
+		main->image->rocket->instances[0].x += x;
+	}
 }
 
 void	ft_hook(mlx_key_data_t keydata, void* param)
