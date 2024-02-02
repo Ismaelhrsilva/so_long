@@ -6,12 +6,23 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/31 20:58:25 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/02 18:27:02 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*static	void	is_collectable(t_main *main, int x, int y)
+{
+
+
+
+
+
+}
+
+
+*/
 
 static int	position_validation(t_main *main, int x, int y)
 {

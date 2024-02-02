@@ -6,18 +6,21 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/31 18:59:09 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/02 19:04:04 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	put_image_window(t_image *image, t_game	*game, t_map *map)
+void	put_image_window(t_image *image, t_game	*game, t_map *map, t_list *list)
 {
 	int	row;
 	int	col;
 	int	len;
+	int	n_collect;
+	t_pos	*pos;
 
+	n_collect = 0;
 	row = 0;
 	len = map->len_image;
 	mlx_image_to_window(game->mlx, image->mapb, 0, 0);
@@ -29,7 +32,17 @@ void	put_image_window(t_image *image, t_game	*game, t_map *map)
 			if (map->build_map[row][col] == '1')
 				mlx_image_to_window(game->mlx, image->rock, col * map->len_image , row * map->len_image);
 			if (map->build_map[row][col] == 'C')
+			{
 				mlx_image_to_window(game->mlx, image->collect, col * map->len_image , row * map->len_image);
+					pos = malloc(sizeof(t_pos));
+					if (pos == NULL)
+						return ;
+					pos->n = n_collect++;
+					pos->type = 'C';
+					pos->x = col;
+					pos->y = row;
+					ft_lstadd_back(list, pos);
+			}
 				if (map->build_map[row][col] == 'E')
 				mlx_image_to_window(game->mlx, image->earth, col * map->len_image , row * map->len_image);
 				if (map->build_map[row][col] == 'P')
@@ -42,41 +55,40 @@ void	put_image_window(t_image *image, t_game	*game, t_map *map)
 		row++;
 	}
 	mlx_image_to_window(game->mlx, image->rocket, map->x_player * map->len_image , map->y_player * map->len_image);
-
+	image->rock->instances[4].enabled = false;
 }
 
-void	put_image(t_game *game, t_map *map, t_image *image)
+void	put_image(t_game *game, t_map *map, t_image *image, t_list *list)
 {
 	construct_image_earth(game, image, map);
 	construct_image_mapb(game, image);
 	construct_image_rock(game, image, map);
 	construct_image_rocket(game, image, map);
 	construct_image_collect(game, image, map);
-	put_image_window(image, game, map);
+	put_image_window(image, game, map, list);
 }
-
 
 int	main(int argc, char **argv)
 {
 	t_main	*main;
+	static t_list	list;
 	int	len;
 
 	if (argc != 2)
 		return (0);
 	main = init_main();
 
-
 	main->map = init_map();
 	main->game = init_game();
 	main->image = init_image();
+	main->list = list;
 	main->map->path_ber = argv[1];
 	read_map(&argv[1], main->map);
 	len = main->map->len_image;
 	main->game->mlx = mlx_init(len * main->map->ncol, len * main->map->nrow, "So_Long", true); 
-	//main->game->mlx = mlx_init(1920, 1080, "So_Long", true); 
 	if (!main->game->mlx)
 		return (0);
-	put_image(main->game, main->map, main->image);
+	put_image(main->game, main->map, main->image, &main->list);
 	mlx_key_hook(main->game->mlx, &ft_hook, main);
 	mlx_loop(main->game->mlx);
 	mlx_terminate(main->game->mlx);

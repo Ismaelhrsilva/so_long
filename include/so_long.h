@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/31 19:00:58 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/02 18:50:53 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,21 @@
 # define ROCKET "textures/rocket.png" 
 # define COLLECT "textures/collectible.png"
 
+
+typedef struct s_pos
+{
+	int	n;
+	int	x;
+	int	y;
+	char	*type;
+}	t_pos;
+
+/*typedef struct s_list
+{
+	void	*content;
+	struct	s_list *next;
+}	t_list;
+*/
 
 typedef struct s_image
 {
@@ -73,22 +88,23 @@ typedef struct s_game
 
 typedef struct s_main
 {
+	t_list	list;
 	t_image	*image;
 	t_map	*map;
 	t_game	*game;
 }	t_main;
 
 
-
 t_game	*init_game(void);
 t_image	*init_image(void);
 t_map	*init_map(void);
 t_main	*init_main(void);
+//t_pos	*init_pos(void);
 
 void	read_map(char **ber, t_map *map);
 void	build_matrix_map(t_map *map);
-void	put_image(t_game *game, t_map *map, t_image *image);
-void	put_image_window(t_image *image, t_game *game, t_map *map);
+void	put_image(t_game *game, t_map *map, t_image *image, t_list *list);
+void	put_image_window(t_image *image, t_game *game, t_map *map, t_list *list);
 void	construct_image_earth(t_game *game, t_image *image, t_map *map);
 void	construct_image_mapb(t_game *game, t_image *image);
 void	construct_image_rock(t_game *game, t_image *image, t_map *map);
