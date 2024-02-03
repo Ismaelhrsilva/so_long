@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/02 21:03:16 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/03 09:24:15 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	put_image(t_game *game, t_map *map, t_image *image, t_list **list)
 int	main(int argc, char **argv)
 {
 	t_main	*main;
-	static t_list	*list;
 	int	len;
 
 	if (argc != 2)
@@ -81,9 +80,7 @@ int	main(int argc, char **argv)
 	main->map = init_map();
 	main->game = init_game();
 	main->image = init_image();
-	list = malloc(sizeof(t_list));
-	list = NULL;
-	main->list = list;
+	main->list = NULL;
 	main->map->path_ber = argv[1];
 	read_map(&argv[1], main->map);
 	len = main->map->len_image;
@@ -91,11 +88,11 @@ int	main(int argc, char **argv)
 	if (!main->game->mlx)
 		return (0);
 	put_image(main->game, main->map, main->image, &main->list);
-	while (main->list)
+	/*while (main->list)
 	{
 		ft_printf("n: %d \n", ((t_pos *) main->list->content)->n);
 		main->list = main->list->next; 
-	}
+	}*/
 	mlx_key_hook(main->game->mlx, &ft_hook, main);
 	mlx_loop(main->game->mlx);
 	mlx_terminate(main->game->mlx);

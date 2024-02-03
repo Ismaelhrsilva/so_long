@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/02 21:02:56 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/03 09:12:53 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,6 @@ typedef struct s_pos
 	int	y;
 	char	*type;
 }	t_pos;
-
-/*typedef struct s_list
-{
-	void	*content;
-	struct	s_list *next;
-}	t_list;
-*/
 
 typedef struct s_image
 {

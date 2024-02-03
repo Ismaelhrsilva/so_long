@@ -6,23 +6,36 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/02 18:27:02 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/03 09:57:04 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*static	void	is_collectable(t_main *main, int x, int y)
+static	void	is_collectable(t_main *main, int x, int y)
 {
+	int	x_col;
+	int	y_col;
+	char	*type;
+	int	n;
+	static t_list	*aux;
 
-
-
-
-
+	aux = main->list;
+	while (aux)
+	{
+		x_col = ((t_pos *)aux->content)->x;
+		y_col = ((t_pos *)aux->content)->y;
+		type = ((t_pos *)aux->content)->type;
+		n = ((t_pos *)aux->content)->n;
+		if (x == x_col && y == y_col && !ft_memcmp(type, "C", 1))
+		{
+			main->image->collect->instances[n].enabled = false;
+			ft_printf("n: %d \n", ((t_pos *) main->list->content)->n);
+			
+		}
+		aux = aux->next;
+	}
 }
-
-
-*/
 
 static int	position_validation(t_main *main, int x, int y)
 {
@@ -58,6 +71,7 @@ static void	step(t_main *main, int x, int y)
 	ft_printf("Linha: %d, Coluna: %d\n", main->map->y_player, main->map->x_player);
 	if(position_validation(main, x, y))
 	{
+		is_collectable(main, x, y);
 		main->image->rocket->instances[0].y += y;
 		main->image->rocket->instances[0].x += x;
 	}
