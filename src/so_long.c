@@ -6,13 +6,13 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/02 19:04:04 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/02 21:03:16 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	put_image_window(t_image *image, t_game	*game, t_map *map, t_list *list)
+void	put_image_window(t_image *image, t_game	*game, t_map *map, t_list **list)
 {
 	int	row;
 	int	col;
@@ -34,22 +34,22 @@ void	put_image_window(t_image *image, t_game	*game, t_map *map, t_list *list)
 			if (map->build_map[row][col] == 'C')
 			{
 				mlx_image_to_window(game->mlx, image->collect, col * map->len_image , row * map->len_image);
-					pos = malloc(sizeof(t_pos));
-					if (pos == NULL)
-						return ;
-					pos->n = n_collect++;
-					pos->type = 'C';
-					pos->x = col;
-					pos->y = row;
-					ft_lstadd_back(list, pos);
+				pos = malloc(sizeof(t_pos));
+				if (pos == NULL)
+					return ;
+				pos->n = n_collect++;
+				pos->type = "C";
+				pos->x = col;
+				pos->y = row;
+				ft_lstadd_back(list, ft_lstnew(pos));
 			}
-				if (map->build_map[row][col] == 'E')
+			if (map->build_map[row][col] == 'E')
 				mlx_image_to_window(game->mlx, image->earth, col * map->len_image , row * map->len_image);
-				if (map->build_map[row][col] == 'P')
-				{	
-					map->x_player = col;
-					map->y_player = row;
-				}
+			if (map->build_map[row][col] == 'P')
+			{	
+				map->x_player = col;
+				map->y_player = row;
+			}
 			col++;
 		}
 		row++;
@@ -58,7 +58,7 @@ void	put_image_window(t_image *image, t_game	*game, t_map *map, t_list *list)
 	image->rock->instances[4].enabled = false;
 }
 
-void	put_image(t_game *game, t_map *map, t_image *image, t_list *list)
+void	put_image(t_game *game, t_map *map, t_image *image, t_list **list)
 {
 	construct_image_earth(game, image, map);
 	construct_image_mapb(game, image);
@@ -71,7 +71,7 @@ void	put_image(t_game *game, t_map *map, t_image *image, t_list *list)
 int	main(int argc, char **argv)
 {
 	t_main	*main;
-	static t_list	list;
+	static t_list	*list;
 	int	len;
 
 	if (argc != 2)
@@ -81,6 +81,8 @@ int	main(int argc, char **argv)
 	main->map = init_map();
 	main->game = init_game();
 	main->image = init_image();
+	list = malloc(sizeof(t_list));
+	list = NULL;
 	main->list = list;
 	main->map->path_ber = argv[1];
 	read_map(&argv[1], main->map);
@@ -89,6 +91,11 @@ int	main(int argc, char **argv)
 	if (!main->game->mlx)
 		return (0);
 	put_image(main->game, main->map, main->image, &main->list);
+	while (main->list)
+	{
+		ft_printf("n: %d \n", ((t_pos *) main->list->content)->n);
+		main->list = main->list->next; 
+	}
 	mlx_key_hook(main->game->mlx, &ft_hook, main);
 	mlx_loop(main->game->mlx);
 	mlx_terminate(main->game->mlx);

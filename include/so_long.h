@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/02 18:50:53 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/02 21:02:56 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct s_game
 
 typedef struct s_main
 {
-	t_list	list;
+	t_list	*list;
 	t_image	*image;
 	t_map	*map;
 	t_game	*game;
@@ -103,8 +103,8 @@ t_main	*init_main(void);
 
 void	read_map(char **ber, t_map *map);
 void	build_matrix_map(t_map *map);
-void	put_image(t_game *game, t_map *map, t_image *image, t_list *list);
-void	put_image_window(t_image *image, t_game *game, t_map *map, t_list *list);
+void	put_image(t_game *game, t_map *map, t_image *image, t_list **list);
+void	put_image_window(t_image *image, t_game *game, t_map *map, t_list **list);
 void	construct_image_earth(t_game *game, t_image *image, t_map *map);
 void	construct_image_mapb(t_game *game, t_image *image);
 void	construct_image_rock(t_game *game, t_image *image, t_map *map);
