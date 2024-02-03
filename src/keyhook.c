@@ -6,21 +6,35 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/03 10:36:32 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/03 13:31:28 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 
+static void	ft_exit(t_main *main, int x, int y)
+{
+	static t_list *aux;
+
+	aux = main->list;
+	while (aux)
+	{
+		
 
 
 
-static	void	is_collectable(t_main *main, int x, int y)
+	}
+
+
+
+}
+
+static void	is_collectable(t_main *main, int x, int y)
 {
 	int	x_col;
 	int	y_col;
-	char	*type;
+	char	type;
 	int	n;
 	static t_list	*aux;
 
@@ -31,12 +45,14 @@ static	void	is_collectable(t_main *main, int x, int y)
 		y_col = ((t_pos *)aux->content)->y;
 		type = ((t_pos *)aux->content)->type;
 		n = ((t_pos *)aux->content)->n;
-		if (x == x_col && y == y_col && !ft_memcmp(type, "C", 1))
+		if (x == x_col && y == y_col && (type == 'C'))
 		{
 			if (main->image->collect->instances[n].enabled == true)
 			{
 				main->image->collect->instances[n].enabled = false;
 				main->map->ncollect--;
+				if (main->map->ncollect == 0)
+					main->image->earth->instances[0].enabled = true;
 			}
 		}
 		aux = aux->next;
@@ -56,14 +72,14 @@ static int	position_validation(t_main *main, int x, int y)
 		signal = 1;
 	if ((x == 0 && y < 0) || (x == 0 && y > 0))
 	{
-		if(!ft_memchr("1", main->map->build_map[i + signal][j], 1))
+		if(!('1' == main->map->build_map[i + signal][j]))
 			main->map->y_player = main->map->y_player + signal;
 		else
 			return (0);
 	}
 	else if ((x > 0 && y == 0) || (x < 0 && y == 0))
 	{
-		if(!ft_memchr("1", main->map->build_map[i][j + signal], 1))
+		if(!('1' == main->map->build_map[i][j + signal]))
 			main->map->x_player = main->map->x_player + signal;
 		else
 			return (0);

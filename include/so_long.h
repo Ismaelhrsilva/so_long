@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/03 09:12:53 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/03 13:26:46 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_pos
 	int	n;
 	int	x;
 	int	y;
-	char	*type;
+	char	type;
 }	t_pos;
 
 typedef struct s_image
@@ -103,7 +103,7 @@ void	construct_image_mapb(t_game *game, t_image *image);
 void	construct_image_rock(t_game *game, t_image *image, t_map *map);
 void	construct_image_rocket(t_game *game, t_image *image, t_map *map);
 void	construct_image_collect(t_game *game, t_image *image, t_map *map);
-void ft_hook(mlx_key_data_t keydata, void* param);
+void	ft_hook(mlx_key_data_t keydata, void* param);
 
 
 #endif
