@@ -6,14 +6,11 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/03 10:20:20 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/03 10:36:32 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static	void	
-
 
 
 

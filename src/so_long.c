@@ -6,11 +6,34 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/03 09:24:15 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/03 10:41:54 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void	pos_obj(t_list **list, int col, int row, char *type)
+{
+	t_pos	*pos;
+	int	n;
+	t_list *aux;
+
+	aux = *list;
+	pos = malloc(sizeof(t_pos));
+	n = 0;
+	if (pos == NULL)
+		return ;
+	while (aux)
+		if (!ft_memcmp(type, ((t_pos *)aux->content)->type, 1))
+			n++;
+	pos->n = n;
+	pos->type = type;
+	pos->x = col;
+	pos->y = row;
+	ft_lstadd_back(list, ft_lstnew(pos));
+}
+
+
 
 void	put_image_window(t_image *image, t_game	*game, t_map *map, t_list **list)
 {
@@ -35,13 +58,14 @@ void	put_image_window(t_image *image, t_game	*game, t_map *map, t_list **list)
 			{
 				mlx_image_to_window(game->mlx, image->collect, col * map->len_image , row * map->len_image);
 				pos = malloc(sizeof(t_pos));
-				if (pos == NULL)
-					return ;
-				pos->n = n_collect++;
-				pos->type = "C";
-				pos->x = col;
-				pos->y = row;
-				ft_lstadd_back(list, ft_lstnew(pos));
+				pos_obj(list, col, row, &map->build_map[row][col]);
+//				if (pos == NULL)
+//					return ;
+//				pos->n = n_collect++;
+//				pos->type = "C";
+//				pos->x = col;
+//				pos->y = row;
+//				ft_lstadd_back(list, ft_lstnew(pos));
 			}
 			if (map->build_map[row][col] == 'E')
 				mlx_image_to_window(game->mlx, image->earth, col * map->len_image , row * map->len_image);
