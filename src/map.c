@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/02 20:12:16 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/03 10:17:28 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ void	read_map(char **ber, t_map *map)
 		map->len_image = WIDTH / map->ncol;
 	else
 		map->len_image = HEIGHT / map->nrow;
+	map->ncollect = 4;
 	build_matrix_map(map);
 }
