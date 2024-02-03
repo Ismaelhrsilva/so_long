@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/03 10:41:54 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/03 10:50:45 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ static void	pos_obj(t_list **list, int col, int row, char *type)
 	if (pos == NULL)
 		return ;
 	while (aux)
+	{
 		if (!ft_memcmp(type, ((t_pos *)aux->content)->type, 1))
 			n++;
+		aux = aux->next;
+	}
 	pos->n = n;
 	pos->type = type;
 	pos->x = col;
@@ -57,8 +60,8 @@ void	put_image_window(t_image *image, t_game	*game, t_map *map, t_list **list)
 			if (map->build_map[row][col] == 'C')
 			{
 				mlx_image_to_window(game->mlx, image->collect, col * map->len_image , row * map->len_image);
-				pos = malloc(sizeof(t_pos));
 				pos_obj(list, col, row, &map->build_map[row][col]);
+//				pos = malloc(sizeof(t_pos));
 //				if (pos == NULL)
 //					return ;
 //				pos->n = n_collect++;
