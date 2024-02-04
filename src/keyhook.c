@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/03 13:43:45 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/04 14:36:34 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ static void	step(t_main *main, int x, int y)
 		ft_exit(main, main->map->x_player, main->map->y_player);
 		main->image->rocket->instances[0].y += y;
 		main->image->rocket->instances[0].x += x;
+		main->map->step++;
+		ft_printf("Step - %d\n", main->map->step);
 	}
 }
 

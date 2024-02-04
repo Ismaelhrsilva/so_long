@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/03 13:26:46 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/04 14:36:02 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct s_map
 	char	*path_ber;
 	char	**build_map;
 	int	len_image;
+	int	step;
 }	t_map;
 
 typedef struct s_game

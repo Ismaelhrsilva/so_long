@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/03 13:28:08 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/04 14:54:50 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	pos_obj(t_list **list, int col, int row, char type)
 			n++;
 		aux = aux->next;
 	}
-	ft_printf("%c", type);
 	pos->n = n;
 	pos->type = type;
 	pos->x = col;

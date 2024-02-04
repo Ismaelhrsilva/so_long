@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/03 10:17:28 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/04 14:33:16 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	build_matrix_map(t_map *map)
 	while (i <= map->nrow)
 	{
 		build_map[i] = get_next_line(fd);
-		ft_printf("%s", build_map[i]);
 		i++;
 	}
 	map->build_map = build_map;
