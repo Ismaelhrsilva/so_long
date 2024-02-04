@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/04 18:01:13 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/04 18:18:47 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ mlx_image_t	*construct_image(t_main *main, char *png, int type);
 
 int	count_char(char *str, char c);
 int	right_number_objects(t_main *main);
+int	right_ber(t_main *main);
 
 #endif

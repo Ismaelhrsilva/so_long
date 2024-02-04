@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/04 18:00:22 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/04 18:27:07 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@ int	main(int argc, char **argv)
 	int	len;
 
 	if (argc != 2)
+	{
+		ft_printf("Number of arguments is incorrect");
 		return (0);
+	}
 	main = init_main();
 	main->map = init_map();
 	main->img = init_img();
 	main->list = NULL;
 	main->map->path_ber = argv[1];
+	if (right_ber(main))
+		return (0);
 	read_map(main->map);
 	if (right_number_objects(main))
 		return (0);
