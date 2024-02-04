@@ -6,43 +6,43 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/01/31 18:56:05 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/04 15:17:10 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	construct_image_earth(t_game *game, t_image *image, t_map *map)
+void	construct_image_earth(t_main *main)
 {
-	image->earth_tex = mlx_load_png(EARTH);
-	image->earth = mlx_texture_to_image(game->mlx, image->earth_tex);
-	mlx_resize_image(image->earth, map->len_image, map->len_image);
+	main->img->earth_tex = mlx_load_png(EARTH);
+	main->img->earth = mlx_texture_to_image(main->mlx, main->img->earth_tex);
+	mlx_resize_image(main->img->earth, main->map->len, main->map->len);
 }
 
-void	construct_image_mapb(t_game *game, t_image *image)
+void	construct_image_mapb(t_main *main)
 {
-	image->mapb_tex = mlx_load_png(MAPB);
-	image->mapb = mlx_texture_to_image(game->mlx, image->mapb_tex);
-	mlx_resize_image(image->mapb, WIDTH, HEIGHT);
+	main->img->mapb_tex = mlx_load_png(MAPB);
+	main->img->mapb = mlx_texture_to_image(main->mlx, main->img->mapb_tex);
+	mlx_resize_image(main->img->mapb, WIDTH, HEIGHT);
 }
 
-void	construct_image_rock(t_game *game, t_image *image, t_map *map)
+void	construct_image_rock(t_main *main)
 {
-	image->rock_tex = mlx_load_png(ROCK);
-	image->rock = mlx_texture_to_image(game->mlx, image->rock_tex);
-	mlx_resize_image(image->rock, map->len_image, map->len_image);
+	main->img->rock_tex = mlx_load_png(ROCK);
+	main->img->rock = mlx_texture_to_image(main->mlx, main->img->rock_tex);
+	mlx_resize_image(main->img->rock, main->map->len, main->map->len);
 }
 
-void	construct_image_rocket(t_game *game, t_image *image, t_map *map)
+void	construct_image_rocket(t_main *main)
 {
-	image->rocket_tex = mlx_load_png(ROCKET);
-	image->rocket = mlx_texture_to_image(game->mlx, image->rocket_tex);
-	mlx_resize_image(image->rocket, map->len_image, map->len_image);
+	main->img->rocket_tex = mlx_load_png(ROCKET);
+	main->img->rocket = mlx_texture_to_image(main->mlx, main->img->rocket_tex);
+	mlx_resize_image(main->img->rocket, main->map->len, main->map->len);
 }
 
-void	construct_image_collect(t_game *game, t_image *image, t_map *map)
+void	construct_image_collect(t_main *main)
 {
-	image->collect_tex = mlx_load_png(COLLECT);
-	image->collect = mlx_texture_to_image(game->mlx, image->collect_tex);
-	mlx_resize_image(image->collect, map->len_image, map->len_image);
+	main->img->collect_tex = mlx_load_png(COLLECT);
+	main->img->collect = mlx_texture_to_image(main->mlx, main->img->collect_tex);
+	mlx_resize_image(main->img->collect, main->map->len, main->map->len);
 }

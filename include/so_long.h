@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/04 14:36:02 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/04 15:24:06 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_pos
 	char	type;
 }	t_pos;
 
-typedef struct s_image
+typedef struct s_img
 {
 	mlx_image_t	*mapb;
 	mlx_image_t	*earth;
@@ -54,10 +54,11 @@ typedef struct s_image
 	mlx_texture_t	*rock_tex;
 	mlx_texture_t	*rocket_tex;
 	mlx_texture_t	*collect_tex;
-}	t_image;
+}	t_img;
 
 typedef struct s_map
 {
+	mlx_t	*mlx;
 	int	nrow;
 	int	ncol;
 	int	nexit;
@@ -66,45 +67,33 @@ typedef struct s_map
 	int	y_player;
 	int	ncollect;
 	char	*path_ber;
-	char	**build_map;
-	int	len_image;
+	char	**space;
+	int	len;
 	int	step;
 }	t_map;
-
-typedef struct s_game
-{
-	mlx_t	*mlx;
-	void	*window;
-	int	width;
-	int	height;
-	void	*id;
-}	t_game;
 
 typedef struct s_main
 {
 	t_list	*list;
-	t_image	*image;
+	t_img	*img;
 	t_map	*map;
-	t_game	*game;
+	mlx_t	*mlx;
 }	t_main;
 
 
-t_game	*init_game(void);
-t_image	*init_image(void);
+t_img	*init_img(void);
 t_map	*init_map(void);
 t_main	*init_main(void);
-//t_pos	*init_pos(void);
 
 void	read_map(char **ber, t_map *map);
 void	build_matrix_map(t_map *map);
-void	put_image(t_game *game, t_map *map, t_image *image, t_list **list);
-void	put_image_window(t_image *image, t_game *game, t_map *map, t_list **list);
-void	construct_image_earth(t_game *game, t_image *image, t_map *map);
-void	construct_image_mapb(t_game *game, t_image *image);
-void	construct_image_rock(t_game *game, t_image *image, t_map *map);
-void	construct_image_rocket(t_game *game, t_image *image, t_map *map);
-void	construct_image_collect(t_game *game, t_image *image, t_map *map);
+void	put_image(t_main *main);
+void	put_image_window(t_main *main);
+void	construct_image_earth(t_main *main);
+void	construct_image_mapb(t_main *main);
+void	construct_image_rock(t_main *main);
+void	construct_image_rocket(t_main *main);
+void	construct_image_collect(t_main *main);
 void	ft_hook(mlx_key_data_t keydata, void* param);
-
 
 #endif

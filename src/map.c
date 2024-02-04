@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/04 14:33:16 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/04 15:11:13 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	build_matrix_map(t_map *map)
 		build_map[i] = get_next_line(fd);
 		i++;
 	}
-	map->build_map = build_map;
+	map->space = build_map;
 }
 
 void	read_map(char **ber, t_map *map)
@@ -58,9 +58,9 @@ void	read_map(char **ber, t_map *map)
 		i++;
 	}
 	if((HEIGHT / map->nrow) >= (WIDTH / map->ncol))
-		map->len_image = WIDTH / map->ncol;
+		map->len = WIDTH / map->ncol;
 	else
-		map->len_image = HEIGHT / map->nrow;
+		map->len = HEIGHT / map->nrow;
 	map->ncollect = 4;
 	build_matrix_map(map);
 }
