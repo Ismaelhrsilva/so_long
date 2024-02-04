@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/04 15:31:47 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/04 16:49:46 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ void	put_image_window(t_main *main)
 
 void	put_image(t_main *main)
 {
-	construct_image_earth(main);
-	construct_image_mapb(main);
-	construct_image_rock(main);
-	construct_image_rocket(main);
-	construct_image_collect(main);
+	main->img->earth = construct_image(main, EARTH, 1);
+	main->img-> rock = construct_image(main,ROCK, 1);
+	main->img->rocket = construct_image(main, ROCKET, 1);
+	main->img->collect = construct_image(main, COLLECT, 1);
+	main->img->mapb = construct_image(main, MAPB, 0);
 	put_image_window(main);
 }
 
