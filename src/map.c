@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/04 15:11:13 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/04 18:00:51 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ void	build_matrix_map(t_map *map)
 	while (i <= map->nrow)
 	{
 		build_map[i] = get_next_line(fd);
+		map->ncollect += count_char(build_map[i], 'C');
+		map->nexit += count_char(build_map[i], 'E');
+		map->nplayer += count_char(build_map[i], 'P');
 		i++;
 	}
 	map->space = build_map;
 }
 
-void	read_map(char **ber, t_map *map)
+void	read_map(t_map *map)
 {
 	int fd;
 	char	*gnl;
@@ -39,7 +42,7 @@ void	read_map(char **ber, t_map *map)
 
 
 	i = 0;
-	fd = open(*ber, O_RDONLY);
+	fd = open(map->path_ber, O_RDONLY);
 	gnl = NULL;
 	if (fd < 0)
 		return ;
@@ -61,6 +64,5 @@ void	read_map(char **ber, t_map *map)
 		map->len = WIDTH / map->ncol;
 	else
 		map->len = HEIGHT / map->nrow;
-	map->ncollect = 4;
 	build_matrix_map(map);
 }

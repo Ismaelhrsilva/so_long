@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/04 16:49:19 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/04 18:01:13 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,14 @@ t_img	*init_img(void);
 t_map	*init_map(void);
 t_main	*init_main(void);
 
-void	read_map(char **ber, t_map *map);
+void	read_map(t_map *map);
 void	build_matrix_map(t_map *map);
 void	put_image(t_main *main);
 void	put_image_window(t_main *main);
 void	ft_hook(mlx_key_data_t keydata, void* param);
 mlx_image_t	*construct_image(t_main *main, char *png, int type);
+
+int	count_char(char *str, char c);
+int	right_number_objects(t_main *main);
 
 #endif
