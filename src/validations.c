@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:01:11 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/05 20:02:19 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/05 20:49:29 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,7 @@ int	map_format(t_map *map, char *str)
 {
 	if (ft_strlenspace(str) != map->ncol)
 		return (ft_printf("Lines with differents sizes"),1);
+	if (!(map->ncol * map->nrow >= 15 && map->nrow >= 3 && map->ncol >= 3))
+		return (ft_printf("Map smaller than possible"), 1);
+	return (0);
 }

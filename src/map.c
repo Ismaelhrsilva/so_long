@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/05 20:19:51 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/05 20:23:16 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ int	build_matrix_map(t_map *map)
 		map->ncollect += count_char(bmap[i], 'C');
 		map->nexit += count_char(bmap[i], 'E');
 		map->nplayer += count_char(bmap[i], 'P');
-		if (map_format(map, bmap[i]) || count_char_prohibited(map, bmap[i]))
+		if (map_format(map, bmap[i]))
+			return (0);
+		if (count_char_prohibited(map, bmap[i]))
 			return (0);
 		i++;
 	}
