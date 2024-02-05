@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/04 18:27:07 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/05 17:56:05 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	main(int argc, char **argv)
 	main->map->path_ber = argv[1];
 	if (right_ber(main))
 		return (0);
-	read_map(main->map);
+	if (read_map(main->map))
+		return (0);
 	if (right_number_objects(main))
 		return (0);
 	len = main->map->len;
