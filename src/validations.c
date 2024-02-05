@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:01:11 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/05 19:08:58 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/05 19:19:58 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,24 +81,21 @@ int	right_ber(t_main *main)
 	len = ft_strlen(main->map->path_ber);
 	ber = &main->map->path_ber[len - 4];
 	fd = open(main->map->path_ber, O_RDONLY);
-	if (fd <= 0)
-	{
-		close(fd);
-		ft_printf("Is was not possible to open the map");
-		return (1);
-	}
 	buffer = malloc(10 * sizeof(char));
 	if (buffer == NULL)
 		return (1);
-	if (read(fd, buffer, 1) <= 0)
+	if (fd <= 0)
 	{
-		ft_printf("Is not a file");
-		return (1);
+		ft_printf("Is was not possible to open the map");
+		return (close(fd), 1);
 	}
+	if (read(fd, buffer, 1) < 0)
+		return (ft_printf("Is not a file"), 1);
 	if (ft_strncmp(ber, ".ber", 4))
-	{
-		ft_printf("Is not a .BER file");
-		return (1);
-	}
+		return (ft_printf("Is not a .BER file"), 1);
+	if (read(fd, buffer, 1) == 0)
+		return (ft_printf("Is empty"), 1);
+	free(buffer);
+	close(fd);
 	return (0);
 }
