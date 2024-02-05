@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/05 18:00:26 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/05 20:01:51 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,8 @@ int	count_char(char *str, char c);
 int	right_number_objects(t_main *main);
 int	right_ber(t_main *main);
 int	count_char_prohibited(t_map *map, char *str);
+int	map_format(t_map *map, char *str);
+
+int	ft_strlenspace(char *str);
 
 #endif

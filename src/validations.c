@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:01:11 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/05 19:19:58 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/05 20:02:19 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,11 @@ int	right_ber(t_main *main)
 		return (ft_printf("Is not a .BER file"), 1);
 	if (read(fd, buffer, 1) == 0)
 		return (ft_printf("Is empty"), 1);
-	free(buffer);
-	close(fd);
-	return (0);
+	return (free(buffer), close(fd), 0);
+}
+
+int	map_format(t_map *map, char *str)
+{
+	if (ft_strlenspace(str) != map->ncol)
+		return (ft_printf("Lines with differents sizes"),1);
 }

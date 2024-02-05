@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/05 18:25:14 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/05 20:19:51 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 int	build_matrix_map(t_map *map)
 {
-	char **build_map;
+	char **bmap;
 	int	fd;
 	int	i;
 
 	i = 0;
 	fd = open(map->path_ber, O_RDONLY);
-	build_map = ft_calloc((map->nrow + 1) , sizeof(char *));
-	if (!build_map)
+	bmap = ft_calloc((map->nrow + 1) , sizeof(char *));
+	if (!bmap)
 		return (1);
 	while (i < map->nrow)
 	{
-		build_map[i] = get_next_line(fd);
-		map->ncollect += count_char(build_map[i], 'C');
-		map->nexit += count_char(build_map[i], 'E');
-		map->nplayer += count_char(build_map[i], 'P');
-		if (count_char_prohibited(map, build_map[i]))
+		bmap[i] = get_next_line(fd);
+		map->ncollect += count_char(bmap[i], 'C');
+		map->nexit += count_char(bmap[i], 'E');
+		map->nplayer += count_char(bmap[i], 'P');
+		if (map_format(map, bmap[i]) || count_char_prohibited(map, bmap[i]))
 			return (0);
 		i++;
 	}
-	map->space = build_map;
+	map->space = bmap;
 	return (1);
 }
 
