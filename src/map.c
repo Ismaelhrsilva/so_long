@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/06 19:12:08 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/06 20:01:04 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ int	build_matrix_map(t_map *map)
 	char **bmap;
 	int	fd;
 	int	i;
+	int	p;
 
 	i = 0;
+	p = 0;
 	fd = open(map->path_ber, O_RDONLY);
 	bmap = ft_calloc((map->nrow + 1) , sizeof(char *));
 	if (!bmap)
@@ -33,10 +35,21 @@ int	build_matrix_map(t_map *map)
 			return (0);
 		if (count_char_prohibited(map, bmap[i]))
 			return (0);
+		if (count_char(bmap[i], 'P'))
+		{
+			map->y_player = i;
+			while (bmap[i][p] != '\n')
+			{
+				if (bmap[i][p] == 'P')
+					map->x_player = p;
+				p++;
+			}
+		}
 		i++;
 	}
+	if (valid_path(map))
+		return (0);
 	map->space = bmap;
-	valid_path(t_map *map);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:01:11 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/06 19:12:30 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/06 20:01:45 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,11 @@ int	map_format(t_map *map, char *str)
 
 static void	fill_path(char **map, int x, int y)
 {
-	if (map[x][y]) == '0'
+	if (map[x][y] == '0')
 		map[x][y] = 'o';
-	else if (map[x][y]) == 'C'
+	else if (map[x][y] == 'C')
 		map[x][y] = 'c';
-	else if (map[x][y]) == 'E'
+	else if (map[x][y] == 'E')
 		map[x][y] = 'e';
 	else
 		return ;
@@ -118,17 +118,36 @@ static void	fill_path(char **map, int x, int y)
 	fill_path(map, x, y - 1);
 }
 
-void	valid_path(t_map *map)
+int	valid_path(t_map *map)
 {
 	int	i;
+	int	j;
+	int	x;
+	int	y;
 
 	i = 0;
-
 	x = map->x_player;
 	y = map->y_player;
 	fill_path(map->space, x, y);
 	while (i < map->nrow)
-		ft_printf("%s\n", map->space[i++]);
+	{
+		ft_printf("%s\n", map->space[i]);
+		if (count_char(map->space[i], 'C') || count_char(map->space[i], 'E'))
+			return (ft_printf("Error\nNo path to collectable or exit"), 1);
+		j = 0;
+		while (map->space[i][j])
+		{
+			if (map[x][y] == 'o')
+				map[x][y] = '0';
+			else if (map[x][y] == 'c')
+				map[x][y] = 'C';
+			else if (map[x][y] == 'e')
+				map[x][y] = 'E';
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
 

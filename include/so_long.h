@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/06 19:10:51 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/06 20:02:00 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ int	count_char_prohibited(t_map *map, char *str);
 int	map_format(t_map *map, char *str);
 
 int	ft_strlenspace(char *str);
-void	fill_path(char **map, int x, int y);
-void	valid_path(t_map *map);
+int	valid_path(t_map *map);
 
 #endif
