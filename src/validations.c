@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:01:11 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/06 20:01:45 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/06 20:11:10 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,12 +137,12 @@ int	valid_path(t_map *map)
 		j = 0;
 		while (map->space[i][j])
 		{
-			if (map[x][y] == 'o')
-				map[x][y] = '0';
-			else if (map[x][y] == 'c')
-				map[x][y] = 'C';
-			else if (map[x][y] == 'e')
-				map[x][y] = 'E';
+			if (map->space[i][j] == 'o')
+				map->space[i][j] = '0';
+			else if (map->space[i][j] == 'c')
+				map->space[i][j] = 'C';
+			else if (map->space[i][j] == 'e')
+				map->space[i][j] = 'E';
 			j++;
 		}
 		i++;
