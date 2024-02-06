@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/05 20:01:51 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/06 17:29:20 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_map
 	char	**space;
 	int	len;
 	int	step;
+	int	row_v;
 }	t_map;
 
 typedef struct s_main

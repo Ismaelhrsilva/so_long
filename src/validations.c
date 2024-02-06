@@ -6,29 +6,11 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:01:11 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/05 20:49:29 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/06 17:45:50 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	count_char(char *str, char c)
-{
-	int	count;
-	int	i;
-
-	count = 0;
-	i = 0;
-	if (str == NULL)
-		return (0);
-	while (str[i] != '\0')
-	{
-		if (str[i] == c)
-			count++;
-		i++;
-	}
-	return count;
-}
 
 int	count_char_prohibited(t_map *map, char *str)
 {
@@ -100,9 +82,23 @@ int	right_ber(t_main *main)
 
 int	map_format(t_map *map, char *str)
 {
+	int	len;
+
+	len = ft_strlenspace(str) -1;
 	if (ft_strlenspace(str) != map->ncol)
 		return (ft_printf("Lines with differents sizes"),1);
 	if (!(map->ncol * map->nrow >= 15 && map->nrow >= 3 && map->ncol >= 3))
 		return (ft_printf("Map smaller than possible"), 1);
+	while (map->row_v <= map->nrow)
+	{
+		if ((map->row_v == 0 || map->row_v == map->nrow)
+			&& count_char(str, '1') != map->ncol)
+			return (ft_printf("Error\nWall does not complety filled with 1"), 1);
+		else if (map->row_v != map->nrow && (str[0] != '1' || str[len] !='1'))
+			return (ft_printf("Error\nWall does not complety filled with 1"), 1);
+		map->row_v ++;
+		break ;
+	}
+
 	return (0);
 }
