@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:01:11 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/06 17:45:50 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/06 18:46:56 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,49 @@ int	map_format(t_map *map, char *str)
 		map->row_v ++;
 		break ;
 	}
-
 	return (0);
 }
+
+/*int	valid_path(t_map *map, int x, int y)
+{
+	x = map->x_player;
+	y = map->y_player;
+	fill_path(map->bmap, x, y);
+
+
+
+
+
+
+
+
+
+
+}
+
+
+void	fill_path(char **map, int x, int y)
+{
+	if (map[x][y]) == '0'
+		map[x][y] = 'o';
+	else if (map[x][y]) == 'C'
+		return ('c');
+	else if (map[x][y]) == 'E'
+		return ('e');
+	else
+		return ;
+	print())
+
+
+	fill_path(map, x + 1, y);
+	fill_path(map, x - 1, y);
+	fill_path(map, x, y + 1);
+	fill_path(map, x, y - 1);
+
+	if (map[x + 1][y] == 0)
+
+
+
+
+
+}*/
