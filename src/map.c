@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/05 20:23:16 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/06 19:12:08 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	build_matrix_map(t_map *map)
 		i++;
 	}
 	map->space = bmap;
+	valid_path(t_map *map);
 	return (1);
 }
 
