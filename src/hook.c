@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyhook.c                                          :+:      :+:    :+:   */
+/*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/04 15:27:48 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/06 20:37:05 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ void	ft_hook(mlx_key_data_t keydata, void* param)
 
 	main = (t_main *) param;
 	len = main->map->len;
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		mlx_terminate(main->mlx);
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
 		step(main, 0, -len);
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)

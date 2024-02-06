@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/06 20:02:00 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/06 20:50:04 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,6 @@ typedef struct s_img
 	mlx_image_t	*rock;
 	mlx_image_t	*rocket;
 	mlx_image_t	*collect;
-	mlx_texture_t	*mapb_tex;
-	mlx_texture_t	*earth_tex;
-	mlx_texture_t	*rock_tex;
-	mlx_texture_t	*rocket_tex;
-	mlx_texture_t	*collect_tex;
 }	t_img;
 
 typedef struct s_map

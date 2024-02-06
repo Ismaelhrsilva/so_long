@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:01:11 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/06 20:11:10 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/06 20:18:52 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,6 @@ int	valid_path(t_map *map)
 	fill_path(map->space, x, y);
 	while (i < map->nrow)
 	{
-		ft_printf("%s\n", map->space[i]);
 		if (count_char(map->space[i], 'C') || count_char(map->space[i], 'E'))
 			return (ft_printf("Error\nNo path to collectable or exit"), 1);
 		j = 0;
@@ -149,5 +148,3 @@ int	valid_path(t_map *map)
 	}
 	return (0);
 }
-
-
