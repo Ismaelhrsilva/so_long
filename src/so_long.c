@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/07 20:18:11 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/07 20:24:08 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	pos_obj(t_list **list, int col, int row, char type)
 {
 	t_pos	*pos;
-	int	n;
-	t_list *aux;
+	int		n;
+	t_list	*aux;
 
 	aux = *list;
 	n = 0;
@@ -36,6 +36,24 @@ static void	pos_obj(t_list **list, int col, int row, char type)
 	ft_lstadd_back(list, ft_lstnew(pos));
 }
 
+static void	ft_switch(int row, int col, int len, t_main *main)
+{
+	if (main->map->space[row][col] == '1')
+		mlx_image_to_window(main->mlx, main->img->rock, col * len, row * len);
+	if (main->map->space[row][col] == 'C')
+	{
+		mlx_image_to_window(main->mlx, main->img->collect,
+			col * len, row * len);
+		pos_obj(&main->list, col, row, main->map->space[row][col]);
+	}
+	if (main->map->space[row][col] == 'E')
+	{
+		mlx_image_to_window(main->mlx, main->img->earth, col * len, row * len);
+		main->img->earth->instances[0].enabled = false;
+		pos_obj(&main->list, col, row, main->map->space[row][col]);
+	}
+}
+
 static void	whiling(int row, int col, int len, t_main *main)
 {
 	while (row < main->map->nrow)
@@ -43,19 +61,7 @@ static void	whiling(int row, int col, int len, t_main *main)
 		col = 0;
 		while (col < main->map->ncol)
 		{
-			if (main->map->space[row][col] == '1')
-				mlx_image_to_window(main->mlx, main->img->rock, col * len , row * len);
-			if (main->map->space[row][col] == 'C')
-			{
-				mlx_image_to_window(main->mlx, main->img->collect, col * len, row * len);
-				pos_obj(&main->list, col, row, main->map->space[row][col]);
-			}
-			if (main->map->space[row][col] == 'E')
-			{
-				mlx_image_to_window(main->mlx, main->img->earth, col * len , row * len);
-				main->img->earth->instances[0].enabled = false;
-				pos_obj(&main->list, col, row, main->map->space[row][col]);
-			}
+			ft_switch(row, col, len, main);
 			col++;
 		}
 		row++;
@@ -64,10 +70,10 @@ static void	whiling(int row, int col, int len, t_main *main)
 
 void	put_image_window(t_main *main)
 {
-	int	row;
-	int	col;
-	int	len;
-	int	n_collect;
+	int		row;
+	int		col;
+	int		len;
+	int		n_collect;
 	t_pos	*pos;
 
 	n_collect = 0;
@@ -76,7 +82,7 @@ void	put_image_window(t_main *main)
 	mlx_image_to_window(main->mlx, main->img->mapb, 0, 0);
 	whiling(row, col, len, main);
 	mlx_image_to_window(main->mlx, main->img->rocket,
-			main->map->x_player * len, main->map->y_player * len);
+		main->map->x_player * len, main->map->y_player * len);
 }
 
 void	put_image(t_main *main)
