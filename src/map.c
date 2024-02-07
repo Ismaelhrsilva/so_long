@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/06 20:14:32 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/07 18:24:58 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,36 +53,35 @@ int	build_matrix_map(t_map *map)
 	return (1);
 }
 
-int	read_map(t_map *map)
+
+static void	len_image(t_map *map)
 {
-	int fd;
-	char	*gnl;
-	int	i;
-
-
-	i = 0;
-	fd = open(map->path_ber, O_RDONLY);
-	gnl = NULL;
-	if (fd < 0)
-		return (1);
-	gnl = get_next_line(fd);
-	while (i>-1)
-	{
-		if (i == 0)
-		{
-			map->ncol = ft_strlen(gnl) -1;
-			map->nrow++;
-		}
-		if(!get_next_line(fd))
-			break ;
-		else
-			map->nrow++;
-		i++;
-	}
 	if((HEIGHT / map->nrow) >= (WIDTH / map->ncol))
 		map->len = WIDTH / map->ncol;
 	else
 		map->len = HEIGHT / map->nrow;
+}
+
+int	read_map(t_map *map)
+{
+	int 	fd;
+	char	*gnl;
+	int	i;
+
+	i = 0;
+	fd = open(map->path_ber, O_RDONLY);
+	if (fd < 0)
+		return (1);
+	gnl = get_next_line(fd);
+	while (gnl)
+	{
+		map->ncol = ft_strlen(gnl) -1;
+		map->nrow++;
+		gnl = get_next_line(fd);
+		i++;
+	}
+	close (fd);
+	len_image(map);
 	if (build_matrix_map(map))
 		return (0);
 	return (1);
