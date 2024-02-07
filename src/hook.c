@@ -6,19 +6,18 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/06 20:37:05 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/07 19:16:01 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
 static void	ft_exit(t_main *main, int x, int y)
 {
-	int	x_col;
-	int	y_col;
-	char	type;
-	static t_list *aux;
+	int				x_col;
+	int				y_col;
+	char			type;
+	static t_list	*aux;
 
 	aux = main->list;
 	if (main->img->earth->instances[0].enabled == true)
@@ -39,10 +38,10 @@ static void	ft_exit(t_main *main, int x, int y)
 
 static void	is_collectable(t_main *main, int x, int y)
 {
-	int	x_col;
-	int	y_col;
-	char	type;
-	int	n;
+	int				x_col;
+	int				y_col;
+	char			type;
+	int				n;
 	static t_list	*aux;
 
 	aux = main->list;
@@ -68,7 +67,7 @@ static void	is_collectable(t_main *main, int x, int y)
 
 static int	position_validation(t_main *main, int x, int y)
 {
-	int 	i;
+	int	i;
 	int	j;
 	int	signal;
 
@@ -79,14 +78,14 @@ static int	position_validation(t_main *main, int x, int y)
 		signal = 1;
 	if ((x == 0 && y < 0) || (x == 0 && y > 0))
 	{
-		if(!('1' == main->map->space[i + signal][j]))
+		if (!('1' == main->map->space[i + signal][j]))
 			main->map->y_player = main->map->y_player + signal;
 		else
 			return (0);
 	}
 	else if ((x > 0 && y == 0) || (x < 0 && y == 0))
 	{
-		if(!('1' == main->map->space[i][j + signal]))
+		if (!('1' == main->map->space[i][j + signal]))
 			main->map->x_player = main->map->x_player + signal;
 		else
 			return (0);
@@ -97,7 +96,7 @@ static int	position_validation(t_main *main, int x, int y)
 
 static void	step(t_main *main, int x, int y)
 {
-	if(position_validation(main, x, y))
+	if (position_validation(main, x, y))
 	{
 		is_collectable(main, main->map->x_player, main->map->y_player);
 		ft_exit(main, main->map->x_player, main->map->y_player);
@@ -108,10 +107,10 @@ static void	step(t_main *main, int x, int y)
 	}
 }
 
-void	ft_hook(mlx_key_data_t keydata, void* param)
+void	ft_hook(mlx_key_data_t keydata, void *param)
 {
 	t_main	*main;
-	int	len;
+	int		len;
 
 	main = (t_main *) param;
 	len = main->map->len;
