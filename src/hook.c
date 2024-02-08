@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/07 19:16:01 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:52:37 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ static void	ft_exit(t_main *main, int x, int y)
 	char			type;
 	static t_list	*aux;
 
+	x_col = 0;
+	y_col = 0;
+	type = '\0';
 	aux = main->list;
 	if (main->img->earth->instances[0].enabled == true)
 	{
@@ -28,9 +31,7 @@ static void	ft_exit(t_main *main, int x, int y)
 			y_col = ((t_pos *)aux->content)->y;
 			type = ((t_pos *)aux->content)->type;
 			if (x == x_col && y == y_col && (type == 'E'))
-			{
-				mlx_terminate(main->mlx);
-			}
+				mlx_close_window(main->mlx);
 			aux = aux->next;
 		}
 	}
@@ -90,8 +91,7 @@ static int	position_validation(t_main *main, int x, int y)
 		else
 			return (0);
 	}
-	else
-		return (1);
+	return (1);
 }
 
 static void	step(t_main *main, int x, int y)
@@ -115,7 +115,7 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 	main = (t_main *) param;
 	len = main->map->len;
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
-		mlx_terminate(main->mlx);
+		mlx_close_window(main->mlx);
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
 		step(main, 0, -len);
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)

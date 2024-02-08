@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/07 20:50:04 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/08 18:05:57 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ mlx_image_t	*construct_image(t_main *main, char *png, int type)
 	image = mlx_texture_to_image(main->mlx, temp);
 	if (!image)
 		return (ft_printf("Error\nIt isn't possible to build image"), NULL);
+	mlx_delete_texture(temp);
 	mlx_resize_image(image, len_w, len_h);
 	return (image);
 }

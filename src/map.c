@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/07 19:05:32 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/08 17:32:35 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	read_map(t_map *map)
 	{
 		map->ncol = ft_strlen(gnl) - 1;
 		map->nrow++;
+		free(gnl);
 		gnl = get_next_line(fd);
 		i++;
 	}
