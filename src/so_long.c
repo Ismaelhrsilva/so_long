@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/07 20:42:40 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/07 21:00:06 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,16 +97,15 @@ int	put_image_window(t_main *main)
 int	put_image(t_main *main)
 {
 	main->img->earth = construct_image(main, EARTH, 1);
-	main->img-> rock = construct_image(main, ROCK, 1);
+	main->img->rock = construct_image(main, ROCK, 1);
 	main->img->rocket = construct_image(main, ROCKET, 1);
 	main->img->collect = construct_image(main, COLLECT, 1);
 	main->img->mapb = construct_image(main, MAPB, 0);
-	put_image_window(main);
-	if (main->img->earth
-			|| main->img-> rock
-			|| main->img->rocket
-			|| main->img->collect
-			|| main->img->mapb
+	if (!main->img->earth
+			|| !main->img->rock
+			|| !main->img->rocket
+			|| !main->img->collect
+			|| !main->img->mapb
 			|| put_image_window(main))
 		return (1);
 	else
