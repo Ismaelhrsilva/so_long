@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/08 17:32:35 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/08 18:58:11 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,14 @@ int	read_map(t_map *map)
 	fd = open(map->path_ber, O_RDONLY);
 	if (fd < 0)
 		return (1);
-	gnl = get_next_line(fd);
-	while (gnl)
+	while (1)
 	{
+		gnl = get_next_line(fd);
+		if (gnl == NULL)
+			break ;
 		map->ncol = ft_strlen(gnl) - 1;
 		map->nrow++;
 		free(gnl);
-		gnl = get_next_line(fd);
 		i++;
 	}
 	close (fd);

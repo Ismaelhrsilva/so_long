@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/08 18:34:47 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/08 18:55:54 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ int	map_format(t_map *map, char *str);
 
 int	ft_strlenspace(char *str);
 int	valid_path(t_map *map);
+void	ft_close(t_main *main);
 
 #endif
