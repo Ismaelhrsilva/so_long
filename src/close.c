@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:53:40 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/08 19:06:58 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/09 20:17:47 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_close(t_main *main)
 {
-	int	i;
-	
+	int				i;
 	static t_list	*aux;
+
 	i = 0;
 	aux = main->list;
 	if (main->map->space)
