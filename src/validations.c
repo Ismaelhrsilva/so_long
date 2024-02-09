@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:01:11 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/08 20:21:31 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/09 19:44:20 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,23 @@ int	map_format(t_map *map, char *str)
 	return (0);
 }
 
-static void	fill_path(char **map, int x, int y)
+static void	fill_path(char **map, int y, int x)
 {
-	if (map[x][y] == '0')
-		map[x][y] = 'o';
-	else if (map[x][y] == 'C')
-		map[x][y] = 'c';
-	else if (map[x][y] == 'E')
-		map[x][y] = 'e';
-	else
-		return ;
-	fill_path(map, x + 1, y);
-	fill_path(map, x - 1, y);
-	fill_path(map, x, y + 1);
-	fill_path(map, x, y - 1);
+	if (map[y][x] != 'P')
+	{
+		if (map[y][x] == '0')
+			map[y][x] = 'o';
+		else if (map[y][x] == 'C')
+			map[y][x] = 'c';
+		else if (map[y][x] == 'E')
+			map[y][x] = 'e';
+		else
+			return ;
+	}
+	fill_path(map, y + 1, x);
+	fill_path(map, y - 1, x);
+	fill_path(map, y, x + 1);
+	fill_path(map, y, x - 1);
 }
 
 int	valid_path(t_map *map)
@@ -103,7 +106,7 @@ int	valid_path(t_map *map)
 	int	j;
 
 	i = 0;
-	fill_path(map->space, map->x_player, map->y_player);
+	fill_path(map->space, map->y_player, map->x_player);
 	while (i < map->nrow)
 	{
 		if (count_char(map->space[i], 'C') || count_char(map->space[i], 'E'))
