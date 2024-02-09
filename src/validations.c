@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:01:11 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/07 19:24:24 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:21:31 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,20 @@ int	right_ber(t_main *main)
 	len = ft_strlen(main->map->path_ber);
 	ber = &main->map->path_ber[len - 4];
 	fd = open(main->map->path_ber, O_RDONLY);
-	buffer = malloc(10 * sizeof(char));
-	if (buffer == NULL)
-		return (1);
 	if (fd <= 0)
 	{
 		ft_printf("Error\nIs was not possible to open the map");
 		return (close(fd), 1);
 	}
+	buffer = malloc(10 * sizeof(char));
+	if (buffer == NULL)
+		return (1);
 	if (read(fd, buffer, 1) < 0)
-		return (ft_printf("Error\nIs not a file"), 1);
+		return (free(buffer), ft_printf("Error\nIs not a file"), 1);
 	if (ft_strncmp(ber, ".ber", 4))
-		return (ft_printf("Error\nIs not a .BER file"), 1);
+		return (free(buffer), ft_printf("Error\nIs not a .BER file"), 1);
 	if (read(fd, buffer, 1) == 0)
-		return (ft_printf("Error\nIs empty"), 1);
+		return (free(buffer), ft_printf("Error\nIs empty"), 1);
 	return (free(buffer), close(fd), 0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/08 18:58:11 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/08 21:07:47 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ int	build_matrix_map(t_map *map)
 	bmap = ft_calloc((map->nrow + 1), sizeof(char *));
 	if (!bmap)
 		return (ft_printf("Erro\nNot possible do build map"), 1);
+	map->space = bmap;
 	while (i < map->nrow)
 	{
-		bmap[i] = get_next_line(fd);
-		if (map_format(map, bmap[i]))
+		map->space[i] = get_next_line(fd);
+		if (map_format(map, map->space[i]))
 			return (0);
-		if (count_char_prohibited(map, bmap[i]))
+		if (count_char_prohibited(map, map->space[i]))
 			return (0);
-		get_map_elements(bmap[i], map, i);
+		get_map_elements(map->space[i], map, i);
 		i++;
 	}
-	map->space = bmap;
 	close(fd);
 	if (valid_path(map))
 		return (0);
