@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 18:42:28 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/11 19:02:57 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct s_img
 	mlx_image_t	*collect;
 	mlx_image_t	*enemy;
 	mlx_image_t	*write;
+	mlx_image_t	*write_text;
 }	t_img;
 
 typedef struct s_map
