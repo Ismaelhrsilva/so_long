@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 12:11:15 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/11 14:07:36 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static void	len_image(t_map *map)
 
 static int	valid_big_map(t_map *map)
 {
-	if (map->nrow >= 100 || map->ncol >= 100)
+	if (map->nrow >= 410 || map->ncol >= 465)
 	{
 		ft_putstr_fd("Error\nMap to big", 2);
 		return (1);
