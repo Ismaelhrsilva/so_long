@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/09 20:23:30 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/11 12:12:00 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int			put_image_window(t_main *main);
 void		ft_hook(mlx_key_data_t keydata, void *param);
 mlx_image_t	*construct_image(t_main *main, char *png, int type);
 int			count_char(char *str, char c);
-int			right_number_objects(t_main *main);
+int			right_number_objects(t_map *map);
 int			right_ber(t_main *main);
 int			count_char_prohibited(t_map *map, char *str);
 int			map_format(t_map *map, char *str);

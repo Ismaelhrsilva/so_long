@@ -6,25 +6,25 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:01:11 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 09:27:58 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/11 12:11:42 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mandatory/so_long.h"
 
-int	right_number_objects(t_main *main)
+int	right_number_objects(t_map *map)
 {
-	if (main->map->ncollect < 1)
+	if (map->ncollect < 1)
 	{
 		ft_putstr_fd("Error\nNo collectables enought", 2);
 		return (1);
 	}
-	if (main->map->nexit != 1)
+	if (map->nexit != 1)
 	{
 		ft_putstr_fd("Error\nthere is not 1 exit", 2);
 		return (1);
 	}
-	if (main->map->nplayer != 1)
+	if (map->nplayer != 1)
 	{
 		ft_putstr_fd("Error\nThere is not 1 player", 2);
 		return (1);
@@ -70,7 +70,7 @@ int	map_format(t_map *map, char *str)
 		return (ft_putstr_fd("Map smaller than possible", 2), 1);
 	while (map->row_v <= map->nrow)
 	{
-		if ((map->row_v == 0 || map->row_v == map->nrow)
+		if ((map->row_v == 0 || map->row_v == map->nrow - 1)
 			&& count_char(str, '1') != map->ncol)
 			return (ft_putstr_fd("Error\nWall does not complety filled with 1", 2), 1);
 		else if (map->row_v != map->nrow && (str[0] != '1' || str[len] != '1'))
