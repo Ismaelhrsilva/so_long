@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 18:04:28 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/11 18:42:28 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define ROCKET "textures/rocket.png"
 # define COLLECT "textures/collectible.png"
 # define ENEMY "textures/enemy.png"
+# define WRITE "textures/write.png"
 
 typedef struct s_pos
 {
@@ -49,6 +50,7 @@ typedef struct s_img
 	mlx_image_t	*rocket;
 	mlx_image_t	*collect;
 	mlx_image_t	*enemy;
+	mlx_image_t	*write;
 }	t_img;
 
 typedef struct s_map
@@ -94,5 +96,6 @@ int			ft_strlenspace(char *str);
 int			valid_path(t_map *map);
 void		ft_close(t_main *main);
 void	is_enemy(t_main *main, int x, int y);
+mlx_image_t	*construct_write(t_main *main, char *png);
 
 #endif

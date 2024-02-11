@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 18:02:17 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/11 18:42:50 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,8 @@ int	put_image_window(t_main *main)
 	if (mlx_image_to_window(main->mlx, main->img->rocket,
 			main->map->x_player * len, main->map->y_player * len) < 0)
 		return (1);
+	if (mlx_image_to_window(main->mlx, main->img->write, 0, 0) < 0)
+			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
 	return (0);
 }
 
@@ -110,6 +112,7 @@ int	put_image(t_main *main)
 	main->img->rocket = construct_image(main, ROCKET, 1);
 	main->img->collect = construct_image(main, COLLECT, 1);
 	main->img->enemy = construct_image(main, ENEMY, 1);
+	main->img->write = construct_write(main, WRITE);
 	main->img->mapb = construct_image(main, MAPB, 0);
 	if (!main->img->earth
 		|| !main->img->rock
@@ -117,6 +120,7 @@ int	put_image(t_main *main)
 		|| !main->img->collect
 		|| !main->img->mapb
 		|| !main->img->enemy
+		|| !main->img->write
 		|| put_image_window(main))
 		return (1);
 	else

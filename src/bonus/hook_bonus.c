@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 18:06:44 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/11 18:58:28 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ static int	position_validation(t_main *main, int x, int y)
 
 static void	step(t_main *main, int x, int y)
 {
+	mlx_image_t	*write;
+	
 	if (position_validation(main, x, y))
 	{
 		is_collectable(main, main->map->x_player, main->map->y_player);
@@ -104,7 +106,13 @@ static void	step(t_main *main, int x, int y)
 		main->img->rocket->instances[0].y += y;
 		main->img->rocket->instances[0].x += x;
 		main->map->step++;
-		ft_printf("number of movements %d\n", main->map->step);
+		if (!write)
+			mlx_delete_image(main->mlx, write);
+		write = mlx_put_string(main->mlx, ft_itoa(main->map->step), 0, 0);
+		if (write)
+			return ;
+		if(mlx_resize_image(write, main->map->len * 2, main->map->len / 2))
+			return ;
 	}
 }
 
