@@ -6,7 +6,7 @@
 #    By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 20:08:54 by ishenriq          #+#    #+#              #
-#    Updated: 2024/02/11 15:43:53 by ishenriq         ###   ########.fr        #
+#    Updated: 2024/02/11 16:27:48 by ishenriq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ define create_dir
 endef
 
 define bonus
-	$(make) WITH_BONUS=TRUE
+	$(MAKE) WITH_BONUS=TRUE
 endef
 
 all: libmlx libft printf $(NAME)
@@ -80,7 +80,7 @@ bonus:
 	$(call bonus)
 
 clean:
-	@rm -rf $(OBJS)
+	@rm -rf $(BUILD_DIR)
 	@rm -rf $(LIBMLX)/build
 	@make -C $(LIBFT) clean
 	@make -C $(PRINTF) clean
