@@ -6,7 +6,7 @@
 #    By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 20:08:54 by ishenriq          #+#    #+#              #
-#    Updated: 2024/02/11 16:27:48 by ishenriq         ###   ########.fr        #
+#    Updated: 2024/02/11 17:18:45 by ishenriq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,8 @@ fclean: clean
 	@make -C $(PRINTF) fclean
 
 re: clean all
+
+re_bonus: clean bonus
 
 norm:
 	norminette -R CheckForbiddenSourceHeader $(SRCS) ./include

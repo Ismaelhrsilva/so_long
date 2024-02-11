@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 14:14:11 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/11 18:02:17 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ static int	ft_switch(int row, int col, int len, t_main *main)
 		main->img->earth->instances[0].enabled = false;
 		pos_obj(&main->list, col, row, main->map->space[row][col]);
 	}
+	if (main->map->space[row][col] == 'A')
+	{
+		if (mlx_image_to_window(main->mlx,
+				main->img->enemy, col * len, row * len) < 0)
+			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
+		pos_obj(&main->list, col, row, main->map->space[row][col]);
+	}
 	return (0);
 }
 
@@ -102,12 +109,14 @@ int	put_image(t_main *main)
 	main->img->rock = construct_image(main, ROCK, 1);
 	main->img->rocket = construct_image(main, ROCKET, 1);
 	main->img->collect = construct_image(main, COLLECT, 1);
+	main->img->enemy = construct_image(main, ENEMY, 1);
 	main->img->mapb = construct_image(main, MAPB, 0);
 	if (!main->img->earth
 		|| !main->img->rock
 		|| !main->img->rocket
 		|| !main->img->collect
 		|| !main->img->mapb
+		|| !main->img->enemy
 		|| put_image_window(main))
 		return (1);
 	else

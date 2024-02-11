@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:59:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 14:14:28 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/11 18:16:15 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	count_char_prohibited(t_map *map, char *str)
 	total_c = map->ncol;
 	wall = count_char(str, '1');
 	back = count_char(str, '0');
-	exit = count_char(str, 'E');
+	exit = count_char(str, 'E') + count_char(str, 'A');
 	allow_c = count_char(str, 'P') + count_char(str, 'C') + exit + wall + back;
 	if (total_c != allow_c)
 	{
