@@ -6,27 +6,27 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:01:11 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/09 19:44:20 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/11 09:27:58 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "mandatory/so_long.h"
 
 int	right_number_objects(t_main *main)
 {
 	if (main->map->ncollect < 1)
 	{
-		ft_printf("Error\nNo collectables enought !!!");
+		ft_putstr_fd("Error\nNo collectables enought", 2);
 		return (1);
 	}
 	if (main->map->nexit != 1)
 	{
-		ft_printf("Error\nthere is not 1 exit !!!");
+		ft_putstr_fd("Error\nthere is not 1 exit", 2);
 		return (1);
 	}
 	if (main->map->nplayer != 1)
 	{
-		ft_printf("Error\nThere is not 1 player !!!");
+		ft_putstr_fd("Error\nThere is not 1 player", 2);
 		return (1);
 	}
 	return (0);
@@ -44,18 +44,18 @@ int	right_ber(t_main *main)
 	fd = open(main->map->path_ber, O_RDONLY);
 	if (fd <= 0)
 	{
-		ft_printf("Error\nIs was not possible to open the map");
+		ft_putstr_fd("Error\nIs was not possible to open the map", 2);
 		return (close(fd), 1);
 	}
 	buffer = malloc(10 * sizeof(char));
 	if (buffer == NULL)
 		return (1);
 	if (read(fd, buffer, 1) < 0)
-		return (free(buffer), ft_printf("Error\nIs not a file"), 1);
+		return (free(buffer), ft_putstr_fd("Error\nIs not a file", 2), 1);
 	if (ft_strncmp(ber, ".ber", 4))
-		return (free(buffer), ft_printf("Error\nIs not a .BER file"), 1);
+		return (free(buffer), ft_putstr_fd("Error\nIs not a .BER file", 2), 1);
 	if (read(fd, buffer, 1) == 0)
-		return (free(buffer), ft_printf("Error\nIs empty"), 1);
+		return (free(buffer), ft_putstr_fd("Error\nIs empty", 2), 1);
 	return (free(buffer), close(fd), 0);
 }
 
@@ -65,16 +65,16 @@ int	map_format(t_map *map, char *str)
 
 	len = ft_strlenspace(str) -1;
 	if (ft_strlenspace(str) != map->ncol)
-		return (ft_printf("Error\nLines with differents sizes"), 1);
+		return (ft_putstr_fd("Error\nLines with differents sizes", 2), 1);
 	if (!(map->ncol * map->nrow >= 15 && map->nrow >= 3 && map->ncol >= 3))
-		return (ft_printf("Map smaller than possible"), 1);
+		return (ft_putstr_fd("Map smaller than possible", 2), 1);
 	while (map->row_v <= map->nrow)
 	{
 		if ((map->row_v == 0 || map->row_v == map->nrow)
 			&& count_char(str, '1') != map->ncol)
-			return (ft_printf("Error\nWall does not complety filled with 1"), 1);
+			return (ft_putstr_fd("Error\nWall does not complety filled with 1", 2), 1);
 		else if (map->row_v != map->nrow && (str[0] != '1' || str[len] != '1'))
-			return (ft_printf("Error\nWall does not complety filled with 1"), 1);
+			return (ft_putstr_fd("Error\nWall does not complety filled with 1", 2), 1);
 		map->row_v ++;
 		break ;
 	}
@@ -110,12 +110,12 @@ int	valid_path(t_map *map)
 	while (i < map->nrow)
 	{
 		if (count_char(map->space[i], 'C') || count_char(map->space[i], 'E'))
-			return (ft_printf("Error\nNo path to collectable or exit"), 1);
+			return (ft_putstr_fd("Error\nNo path to collectable or exit", 2), 1);
 		j = 0;
 		while (map->space[i][j])
 		{
 			if (map->space[i][j] == 'o')
-				map->space[i][j] = '0';
+					map->space[i][j] = '0';
 			else if (map->space[i][j] == 'c')
 				map->space[i][j] = 'C';
 			else if (map->space[i][j] == 'e')

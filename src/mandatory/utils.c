@@ -6,11 +6,11 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:59:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/07 19:25:01 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/11 09:26:19 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "mandatory/so_long.h"
 
 int	ft_strlenspace(char *str)
 {
@@ -62,7 +62,7 @@ int	count_char_prohibited(t_map *map, char *str)
 	allow_c = count_char(str, 'P') + count_char(str, 'C') + exit + wall + back;
 	if (total_c != allow_c)
 	{
-		ft_printf("Error\nLetter prohibited");
+		ft_putstr_fd("Error\nLetter prohibited", 2);
 		return (1);
 	}
 	else

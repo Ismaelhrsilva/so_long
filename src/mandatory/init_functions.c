@@ -6,11 +6,11 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 19:53:14 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/07 19:16:26 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/11 09:23:23 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "mandatory/so_long.h"
 
 t_map	*init_map(void)
 {

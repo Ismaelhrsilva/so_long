@@ -6,11 +6,11 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:53:40 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/09 20:17:47 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/11 09:24:01 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "mandatory/so_long.h"
 
 void	ft_close(t_main *main)
 {

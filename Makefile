@@ -6,7 +6,7 @@
 #    By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 20:08:54 by ishenriq          #+#    #+#              #
-#    Updated: 2024/02/04 17:21:10 by ishenriq         ###   ########.org.br    #
+#    Updated: 2024/02/09 20:41:59 by ishenriq         ###   ########.org.br    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,12 @@ GNL	:= ./lib/gnl
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include -I $(LIBFT) -I $(PRINTF) $(LIBS) -I $(GNL)
 
-
 LIBS 	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT)/libft.a \
 	-lm $(PRINTF)/libftprintf.a
 
 LDFLAGS	:= $(HEADERS) $(LIBS)
 
-SRCS	:= $(wildcard ./src/*.c)
+SRCS	:= $(wildcard ./src/mandatory/*.c)
 
 OBJS	:= ${SRCS:.c=.o}
 

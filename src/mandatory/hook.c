@@ -6,11 +6,11 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/08 18:52:37 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/11 09:24:22 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "mandatory/so_long.h"
 
 static void	ft_exit(t_main *main, int x, int y)
 {
@@ -103,7 +103,7 @@ static void	step(t_main *main, int x, int y)
 		main->img->rocket->instances[0].y += y;
 		main->img->rocket->instances[0].x += x;
 		main->map->step++;
-		ft_printf("Step - %d\n", main->map->step);
+		ft_printf("number of movements %d\n", main->map->step);
 	}
 }
 

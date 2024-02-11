@@ -6,18 +6,18 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/09 19:59:22 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/11 09:25:43 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "mandatory/so_long.h"
 
 int	main(int argc, char **argv)
 {
 	t_main	*main;
 
 	if (argc != 2)
-		return (ft_printf("Error\nNumber of args are incorrect"), 0);
+		return (ft_putstr_fd("Error\nNumber of args are incorrect", 2), 2);
 	main = init_main();
 	main->map = init_map();
 	main->img = init_img();
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	main->mlx = mlx_init(main->map->len * main->map->ncol,
 			main->map->len * main->map->nrow, "So_Long", true);
 	if (!main->mlx)
-		return (ft_close(main), ft_printf("Error\nMLX fails"), 0);
+		return (ft_close(main), ft_putstr_fd("Error\nMLX fails", 2), 2);
 	if (put_image(main))
 		return (ft_close(main), 0);
 	mlx_key_hook(main->mlx, &ft_hook, main);

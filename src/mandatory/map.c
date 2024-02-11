@@ -6,11 +6,11 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/08 21:07:47 by ishenriq         ###   ########.org.br   */
+/*   Updated: 2024/02/11 09:33:42 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "mandatory/so_long.h"
 
 static void	get_map_elements(char *bmap_i, t_map *map, int i)
 {
@@ -42,7 +42,7 @@ int	build_matrix_map(t_map *map)
 	fd = open(map->path_ber, O_RDONLY);
 	bmap = ft_calloc((map->nrow + 1), sizeof(char *));
 	if (!bmap)
-		return (ft_printf("Erro\nNot possible do build map"), 1);
+		return (ft_putstr_fd("Erro\nNot possible do build map", 2), 1);
 	map->space = bmap;
 	while (i < map->nrow)
 	{
@@ -68,6 +68,18 @@ static void	len_image(t_map *map)
 		map->len = HEIGHT / map->nrow;
 }
 
+
+static int	valid_big_map(t_map *map)
+{
+	if (map->nrow >= 100 || map->ncol >= 100)
+	{
+		ft_putstr_fd("Error\nMap to big", 2);
+		return (1);
+	}
+	else
+		return (0);
+}
+
 int	read_map(t_map *map)
 {
 	int		fd;
@@ -89,6 +101,8 @@ int	read_map(t_map *map)
 		i++;
 	}
 	close (fd);
+	if (valid_big_map(map))
+		return (1);
 	len_image(map);
 	if (build_matrix_map(map))
 		return (0);

@@ -6,11 +6,11 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/09 20:20:04 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/11 09:26:08 by ishenriq         ###   ########.org.br   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "mandatory/so_long.h"
 
 static void	pos_obj(t_list **list, int col, int row, char type)
 {
@@ -41,19 +41,19 @@ static int	ft_switch(int row, int col, int len, t_main *main)
 	if (main->map->space[row][col] == '1')
 		if (mlx_image_to_window(main->mlx,
 				main->img->rock, col * len, row * len) < 0)
-			return (ft_printf("Error\nPut image fails"), 1);
+			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
 	if (main->map->space[row][col] == 'C')
 	{
 		if (mlx_image_to_window(main->mlx, main->img->collect,
 				col * len, row * len) < 0)
-			return (ft_printf("Error\nPut image fails"), 1);
+			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
 		pos_obj(&main->list, col, row, main->map->space[row][col]);
 	}
 	if (main->map->space[row][col] == 'E')
 	{
 		if (mlx_image_to_window(main->mlx,
 				main->img->earth, col * len, row * len) < 0)
-			return (ft_printf("Error\nPut image fails"), 1);
+			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
 		main->img->earth->instances[0].enabled = false;
 		pos_obj(&main->list, col, row, main->map->space[row][col]);
 	}
