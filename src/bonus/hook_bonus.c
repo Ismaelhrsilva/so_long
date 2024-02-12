@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 17:30:54 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:35:33 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,12 @@ static void	ft_exit(t_main *main, int x, int y)
 	int				y_col;
 	char			type;
 	static t_list	*aux;
-	int	time;
 
-	time = 0;
 	x_col = 0;
 	y_col = 0;
 	type = '\0';
 	aux = main->list;
-	if (main->img->earth->instances[0].enabled == true)
+	if (main->map->ncollect == -1)
 	{
 		while (aux)
 		{
