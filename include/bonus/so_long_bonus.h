@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 19:02:57 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:38:37 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int			map_format(t_map *map, char *str);
 int			ft_strlenspace(char *str);
 int			valid_path(t_map *map);
 void		ft_close(t_main *main);
-void	is_enemy(t_main *main, int x, int y);
+void		is_enemy(t_main *main, int x, int y);
 mlx_image_t	*construct_write(t_main *main, char *png);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 19:25:47 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:01:40 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	is_collectable(t_main *main, int x, int y)
 	int				y_col;
 	char			type;
 	int				n;
-	static t_list	*aux;
+	t_list	*aux;
 
 	aux = main->list;
 	while (aux)
@@ -98,14 +98,14 @@ static void	step(t_main *main, int x, int y)
 {
 	if (position_validation(main, x, y))
 	{
-		is_enemy(main, main->map->x_player, main->map->y_player);
 		is_collectable(main, main->map->x_player, main->map->y_player);
+		is_enemy(main, main->map->x_player, main->map->y_player);
 		ft_exit(main, main->map->x_player, main->map->y_player);
 		main->img->rocket->instances[0].y += y;
 		main->img->rocket->instances[0].x += x;
 		main->map->step++;
-		//if (main->img->write_text)
-		//	mlx_delete_image(main->mlx, main->img->write_text);
+		if (main->img->write_text)
+			mlx_delete_image(main->mlx, main->img->write_text);
 		main->img->write_text = mlx_put_string(main->mlx, ft_itoa(main->map->step), 0, 0);
 		if (main->img->write_text)
 			return ;

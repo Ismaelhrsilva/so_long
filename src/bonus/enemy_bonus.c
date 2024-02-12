@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 18:04:52 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:01:35 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	is_enemy(t_main *main, int x, int y)
 	int				y_col;
 	char			type;
 	int				n;
-	static t_list	*aux;
+	t_list	*aux;
 
 	aux = main->list;
 	while (aux)
