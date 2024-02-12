@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 17:35:33 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:59:09 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void	is_collectable(t_main *main, int x, int y)
 				main->img->collect->instances[n].enabled = false;
 				main->map->ncollect--;
 				if (main->map->ncollect == 0)
-					//main->img->earth->instances[0].enabled = true;
 					main->map->ncollect = -1;
 			}
 		}
@@ -97,6 +96,9 @@ static int	position_validation(t_main *main, int x, int y)
 
 static void	step(t_main *main, int x, int y)
 {
+	char	*number;
+	char	*join;
+
 	if (position_validation(main, x, y))
 	{
 		is_collectable(main, main->map->x_player, main->map->y_player);
@@ -107,11 +109,15 @@ static void	step(t_main *main, int x, int y)
 		main->map->step++;
 		if (main->img->write_text)
 			mlx_delete_image(main->mlx, main->img->write_text);
-		main->img->write_text = mlx_put_string(main->mlx, ft_strjoin("Number of movements ", ft_itoa(main->map->step)), 0, 0);
-		if (main->img->write_text)
+		number = ft_itoa(main->map->step);
+		join = ft_strjoin("Number of movements ", number);
+		main->img->write_text = mlx_put_string(main->mlx, join, 0, 0);
+		if (!main->img->write_text)
 			return ;
-		if(mlx_resize_image(main->img->write_text, main->map->len * 2, main->map->len / 2))
+		if(mlx_resize_image(main->img->write_text, main->map->len * 2, main->map->len / 3) == 0)
 			return ;
+		free(number);
+		free(join);
 	}
 }
 
