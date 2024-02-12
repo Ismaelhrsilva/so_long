@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 16:16:52 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:30:08 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ static int	ft_switch(int row, int col, int len, t_main *main)
 				main->img->earth, col * len, row * len) < 0)
 			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
 		main->img->earth->instances[0].enabled = false;
+		if (mlx_image_to_window(main->mlx,
+				main->img->earth_f, col * len, row * len) < 0)
+			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
+		main->img->earth_f->instances[0].enabled = false;
 		pos_obj(&main->list, col, row, main->map->space[row][col]);
 	}
 	if (main->map->space[row][col] == 'A')

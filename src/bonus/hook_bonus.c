@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 17:26:58 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:30:54 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,8 @@ static void	is_collectable(t_main *main, int x, int y)
 				main->img->collect->instances[n].enabled = false;
 				main->map->ncollect--;
 				if (main->map->ncollect == 0)
-					if(mlx_image_to_window(main->mlx, main->img->earth_f, y_col, x_col))
-					{
-						ft_putstr_fd("Error\nNot able to put image", 2);
-						return ;
-					}
 					//main->img->earth->instances[0].enabled = true;
+					main->map->ncollect = -1;
 			}
 		}
 		aux = aux->next;
