@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 16:27:13 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:15:08 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,7 @@ static void	ft_exit(t_main *main, int x, int y)
 			y_col = ((t_pos *)aux->content)->y;
 			type = ((t_pos *)aux->content)->type;
 			if (x == x_col && y == y_col && (type == 'E'))
-			{	
-				main->img->earth->instances[0].enabled = false;
-				if(mlx_image_to_window(main->mlx, main->img->earth_f, x, y))
-					//return (ft_strput_fd("Error\nNot able to put image", 2), );
-					return ;
-				while (time < 1000000)
-					time++;
 				mlx_close_window(main->mlx);
-			}
 			aux = aux->next;
 		}
 	}
@@ -69,7 +61,12 @@ static void	is_collectable(t_main *main, int x, int y)
 				main->img->collect->instances[n].enabled = false;
 				main->map->ncollect--;
 				if (main->map->ncollect == 0)
-					main->img->earth->instances[0].enabled = true;
+					if(mlx_image_to_window(main->mlx, main->img->earth_f, y, x))
+					{
+						ft_putstr_fd("Error\nNot able to put image", 2);
+						return ;
+					}
+					//main->img->earth->instances[0].enabled = true;
 			}
 		}
 		aux = aux->next;

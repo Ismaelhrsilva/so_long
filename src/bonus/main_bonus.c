@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 14:13:39 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:10:54 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int argc, char **argv)
 	if (put_image(main))
 		return (ft_close(main), 0);
 	mlx_key_hook(main->mlx, &ft_hook, main);
+	mlx_loop_hook(main->mlx, &ft_loop, main);
 	mlx_loop(main->mlx);
 	mlx_terminate(main->mlx);
 	return (ft_close(main), 0);
