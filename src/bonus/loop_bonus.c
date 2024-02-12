@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:55:06 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 17:37:43 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:26:45 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_loop(void *v)
 			main->img->earth->instances[0].enabled = false;
 			main->img->earth_f->instances[0].enabled = true;
 		}
-		if (time % 2 != 0)
+		if (time % 2 == 1)
 		{
 			main->img->earth->instances[0].enabled = true;
 			main->img->earth_f->instances[0].enabled = false;
