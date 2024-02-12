@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 16:01:40 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:27:13 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ static void	ft_exit(t_main *main, int x, int y)
 	int				y_col;
 	char			type;
 	static t_list	*aux;
+	int	time;
 
+	time = 0;
 	x_col = 0;
 	y_col = 0;
 	type = '\0';
@@ -31,7 +33,15 @@ static void	ft_exit(t_main *main, int x, int y)
 			y_col = ((t_pos *)aux->content)->y;
 			type = ((t_pos *)aux->content)->type;
 			if (x == x_col && y == y_col && (type == 'E'))
+			{	
+				main->img->earth->instances[0].enabled = false;
+				if(mlx_image_to_window(main->mlx, main->img->earth_f, x, y))
+					//return (ft_strput_fd("Error\nNot able to put image", 2), );
+					return ;
+				while (time < 1000000)
+					time++;
 				mlx_close_window(main->mlx);
+			}
 			aux = aux->next;
 		}
 	}
@@ -106,7 +116,7 @@ static void	step(t_main *main, int x, int y)
 		main->map->step++;
 		if (main->img->write_text)
 			mlx_delete_image(main->mlx, main->img->write_text);
-		main->img->write_text = mlx_put_string(main->mlx, ft_itoa(main->map->step), 0, 0);
+		main->img->write_text = mlx_put_string(main->mlx, ft_strjoin("Number of movements ", ft_itoa(main->map->step)), 0, 0);
 		if (main->img->write_text)
 			return ;
 		if(mlx_resize_image(main->img->write_text, main->map->len * 2, main->map->len / 2))

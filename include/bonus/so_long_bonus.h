@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 15:38:37 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:21:29 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define WIDTH 1920
 # define HEIGHT 960
 # define EARTH "textures/earth.png"
+# define EARTH_F "textures/earth_f.png"
 # define MAPB "textures/mapb.png"
 # define ROCK "textures/rock.png"
 # define ROCKET "textures/rocket.png"
@@ -46,6 +47,7 @@ typedef struct s_img
 {
 	mlx_image_t	*mapb;
 	mlx_image_t	*earth;
+	mlx_image_t	*earth_f;
 	mlx_image_t	*rock;
 	mlx_image_t	*rocket;
 	mlx_image_t	*collect;
