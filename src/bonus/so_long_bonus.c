@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 17:30:08 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:53:04 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,38 +36,30 @@ static void	pos_obj(t_list **list, int col, int row, char type)
 	ft_lstadd_back(list, ft_lstnew(pos));
 }
 
-static int	ft_switch(int row, int col, int len, t_main *main)
+static int	ft_switch(int r, int c, int l, t_main *main)
 {
-	if (main->map->space[row][col] == '1')
-		if (mlx_image_to_window(main->mlx,
-				main->img->rock, col * len, row * len) < 0)
+	int	h;
+
+	h = r * l;
+	if (main->map->space[r][c] == '1')
+		if (mlx_image_to_window(main->mlx, main->img->rock, c * l, h) < 0)
 			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
-	if (main->map->space[row][col] == 'C')
-	{
-		if (mlx_image_to_window(main->mlx, main->img->collect,
-				col * len, row * len) < 0)
+	if (main->map->space[r][c] == 'C')
+		if (mlx_image_to_window(main->mlx, main->img->collect, c * l, h) < 0)
 			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
-		pos_obj(&main->list, col, row, main->map->space[row][col]);
-	}
-	if (main->map->space[row][col] == 'E')
+	if (main->map->space[r][c] == 'E')
 	{
-		if (mlx_image_to_window(main->mlx,
-				main->img->earth, col * len, row * len) < 0)
+		if (mlx_image_to_window(main->mlx, main->img->earth, c * l, h) < 0)
 			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
 		main->img->earth->instances[0].enabled = false;
-		if (mlx_image_to_window(main->mlx,
-				main->img->earth_f, col * len, row * len) < 0)
+		if (mlx_image_to_window(main->mlx, main->img->earth_f, c * l, h) < 0)
 			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
 		main->img->earth_f->instances[0].enabled = false;
-		pos_obj(&main->list, col, row, main->map->space[row][col]);
 	}
-	if (main->map->space[row][col] == 'A')
-	{
-		if (mlx_image_to_window(main->mlx,
-				main->img->enemy, col * len, row * len) < 0)
+	if (main->map->space[r][c] == 'A')
+		if (mlx_image_to_window(main->mlx, main->img->enemy, c * l, h) < 0)
 			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
-		pos_obj(&main->list, col, row, main->map->space[row][col]);
-	}
+	pos_obj(&main->list, c, r, main->map->space[r][c]);
 	return (0);
 }
 
@@ -105,7 +97,7 @@ int	put_image_window(t_main *main)
 			main->map->x_player * len, main->map->y_player * len) < 0)
 		return (1);
 	if (mlx_image_to_window(main->mlx, main->img->write, 0, 0) < 0)
-			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
+		return (ft_putstr_fd("Error\nPut image fails", 2), 1);
 	return (0);
 }
 

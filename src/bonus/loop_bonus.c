@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:55:06 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 18:26:45 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:36:19 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	ft_loop(void *v)
 {
 	t_main	*main;
-	int	time;
-	
+	int		time;
+
 	time = (int )mlx_get_time();
 	main = (t_main *) v;
 	if (main->map->ncollect == -1)

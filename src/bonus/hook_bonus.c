@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 17:59:09 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:36:03 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ static void	ft_exit(t_main *main, int x, int y)
 
 static void	is_collectable(t_main *main, int x, int y)
 {
-	int				x_col;
-	int				y_col;
-	char			type;
-	int				n;
+	int		x_col;
+	int		y_col;
+	char	type;
+	int		n;
 	t_list	*aux;
 
 	aux = main->list;
@@ -114,7 +114,8 @@ static void	step(t_main *main, int x, int y)
 		main->img->write_text = mlx_put_string(main->mlx, join, 0, 0);
 		if (!main->img->write_text)
 			return ;
-		if(mlx_resize_image(main->img->write_text, main->map->len * 2, main->map->len / 3) == 0)
+		if (mlx_resize_image(main->img->write_text, main->map->len * 2,
+				main->map->len / 3) == 0)
 			return ;
 		free(number);
 		free(join);

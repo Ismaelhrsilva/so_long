@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 14:13:55 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:36:30 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ static void	len_image(t_map *map)
 	else
 		map->len = HEIGHT / map->nrow;
 }
-
 
 static int	valid_big_map(t_map *map)
 {

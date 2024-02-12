@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 16:01:35 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:35:14 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	is_enemy(t_main *main, int x, int y)
 {
-	int				x_col;
-	int				y_col;
-	char			type;
-	int				n;
+	int		x_col;
+	int		y_col;
+	char	type;
+	int		n;
 	t_list	*aux;
 
 	aux = main->list;
@@ -29,7 +29,7 @@ void	is_enemy(t_main *main, int x, int y)
 		n = ((t_pos *)aux->content)->n;
 		if (x == x_col && y == y_col && (type == 'A'))
 		{
-				mlx_close_window(main->mlx);
+			mlx_close_window(main->mlx);
 		}
 		aux = aux->next;
 	}

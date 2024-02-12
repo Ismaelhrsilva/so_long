@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:01:11 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 14:14:47 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:37:03 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,11 @@ int	map_format(t_map *map, char *str)
 	{
 		if ((map->row_v == 0 || map->row_v == map->nrow - 1)
 			&& count_char(str, '1') != map->ncol)
-			return (ft_putstr_fd("Error\nWall does not complety filled with 1", 2), 1);
+			return (ft_putstr_fd("Error\nWall does not complety filled with 1",
+					2), 1);
 		else if (map->row_v != map->nrow && (str[0] != '1' || str[len] != '1'))
-			return (ft_putstr_fd("Error\nWall does not complety filled with 1", 2), 1);
+			return (ft_putstr_fd("Error\nWall does not complety filled with 1",
+					2), 1);
 		map->row_v ++;
 		break ;
 	}

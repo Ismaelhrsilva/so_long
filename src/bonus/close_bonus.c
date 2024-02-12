@@ -6,11 +6,12 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 17:53:40 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 14:18:31 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/02/12 18:33:19 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus/so_long_bonus.h"
+
 void	ft_close(t_main *main)
 {
 	int				i;
