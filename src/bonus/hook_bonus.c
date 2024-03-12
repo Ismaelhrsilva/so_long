@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 18:36:03 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:01:44 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 
 	main = (t_main *) param;
 	len = main->map->len;
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	if (keydata.key == -1 && keydata.action == MLX_PRESS)
 		mlx_close_window(main->mlx);
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
 		step(main, 0, -len);
