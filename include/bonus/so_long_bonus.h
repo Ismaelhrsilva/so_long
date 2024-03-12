@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/12 20:08:40 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/12 20:26:42 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,6 @@ void		ft_close(t_main *main);
 void		is_enemy(t_main *main, int x, int y);
 mlx_image_t	*construct_write(t_main *main, char *png);
 void		ft_loop(void *v);
-void	walk_enemy(t_main *main, int x, int y);
+void	walk_enemy(t_main *main);
 
 #endif

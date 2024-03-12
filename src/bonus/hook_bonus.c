@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/12 20:08:48 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/12 20:36:52 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,9 @@ static void	step(t_main *main, int x, int y)
 	if (position_validation(main, x, y))
 	{
 		is_collectable(main, main->map->x_player, main->map->y_player);
+		walk_enemy(main);
 		is_enemy(main, main->map->x_player, main->map->y_player);
 		ft_exit(main, main->map->x_player, main->map->y_player);
-		walk_enemy(main, x, y);
 		main->img->rocket->instances[0].y += y;
 		main->img->rocket->instances[0].x += x;
 		main->map->step++;

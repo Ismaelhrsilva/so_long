@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/12 20:11:47 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/12 20:36:07 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,41 @@ void	is_enemy(t_main *main, int x, int y)
 	return (1);
 }*/
 
-void	walk_enemy(t_main *main, int x, int y)
+void	walk_enemy(t_main *main)
 {
-	int i;
-	//map->len
-	i = 0;
-	while (i <= main->map->nenemy)
+	int		x;
+	int		y;
+	char	type;
+	int		n;
+	t_list	*aux;
+
+	aux = main->list;
+	while (aux)
 	{
-		main->img->enemy->instances[i].y += y;
-		main->img->enemy->instances[i].x += x;
-		i++;
+		x = ((t_pos *)aux->content)->x;
+		y = ((t_pos *)aux->content)->y;
+		type = ((t_pos *)aux->content)->type;
+		n = ((t_pos *)aux->content)->n;
+		if (x > main->map->x_player && (type == 'A'))
+		{
+			main->img->enemy->instances[n].x -= main->map->len;
+			((t_pos *)aux->content)->x--;
+		}
+		if (x < main->map->x_player && (type == 'A'))
+		{
+			main->img->enemy->instances[n].x += main->map->len;
+			((t_pos *)aux->content)->x++;
+		}
+		if (y > main->map->y_player && (type == 'A'))
+		{
+			main->img->enemy->instances[n].y -= main->map->len;
+			((t_pos *)aux->content)->y--;
+		}
+		if (y < main->map->y_player && (type == 'A'))
+		{
+			main->img->enemy->instances[n].y += main->map->len;
+			((t_pos *)aux->content)->y++;
+		}
+		aux = aux->next;
 	}
 }
