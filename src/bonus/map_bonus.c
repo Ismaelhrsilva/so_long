@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 19:52:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 18:36:30 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/12 20:05:43 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	get_map_elements(char *bmap_i, t_map *map, int i)
 	map->ncollect += count_char(bmap_i, 'C');
 	map->nexit += count_char(bmap_i, 'E');
 	map->nplayer += count_char(bmap_i, 'P');
+	map->nenemy += count_char(bmap_i, 'A');
 	if (count_char(bmap_i, 'P'))
 	{
 		map->y_player = i;
