@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/13 18:17:08 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/13 20:48:24 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define ROCKET_LEFT "textures/rocket_left.png"
 # define COLLECT "textures/collectible.png"
 # define ENEMY "textures/enemy.png"
+# define WEAPON "textures/weapon.png"
 # define WRITE "textures/write.png"
 
 typedef struct s_pos
@@ -58,6 +59,7 @@ typedef struct s_img
 	mlx_image_t	*rocket_left;
 	mlx_image_t	*collect;
 	mlx_image_t	*enemy;
+	mlx_image_t	*weapon;
 	mlx_image_t	*write;
 	mlx_image_t	*write_text;
 }	t_img;

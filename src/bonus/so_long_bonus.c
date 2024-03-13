@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/13 18:52:37 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/13 20:48:53 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int	put_image(t_main *main)
 	main->img->rocket_left = construct_image(main, ROCKET_LEFT, 1);
 	main->img->collect = construct_image(main, COLLECT, 1);
 	main->img->enemy = construct_image(main, ENEMY, 1);
+	main->img->weapon = construct_image(main, WEAPON, 1);
 	main->img->write = construct_write(main, WRITE);
 	main->img->mapb = construct_image(main, MAPB, 0);
 	if (!main->img->earth
