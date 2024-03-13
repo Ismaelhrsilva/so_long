@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/12 20:26:42 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:17:08 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@
 # define MAPB "textures/mapb.png"
 # define ROCK "textures/rock.png"
 # define ROCKET "textures/rocket.png"
+# define ROCKET_UP "textures/rocket_up.png"
+# define ROCKET_DOWN "textures/rocket_down.png"
+# define ROCKET_LEFT "textures/rocket_left.png"
 # define COLLECT "textures/collectible.png"
 # define ENEMY "textures/enemy.png"
 # define WRITE "textures/write.png"
@@ -50,6 +53,9 @@ typedef struct s_img
 	mlx_image_t	*earth_f;
 	mlx_image_t	*rock;
 	mlx_image_t	*rocket;
+	mlx_image_t	*rocket_up;
+	mlx_image_t	*rocket_down;
+	mlx_image_t	*rocket_left;
 	mlx_image_t	*collect;
 	mlx_image_t	*enemy;
 	mlx_image_t	*write;
@@ -103,5 +109,6 @@ void		is_enemy(t_main *main, int x, int y);
 mlx_image_t	*construct_write(t_main *main, char *png);
 void		ft_loop(void *v);
 void	walk_enemy(t_main *main);
+void	ft_exit(t_main *main, int x, int y);
 
 #endif

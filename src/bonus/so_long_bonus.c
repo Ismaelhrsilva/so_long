@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/12 18:53:04 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:42:18 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,18 @@ int	put_image_window(t_main *main)
 	if (mlx_image_to_window(main->mlx, main->img->rocket,
 			main->map->x_player * len, main->map->y_player * len) < 0)
 		return (1);
+	if (mlx_image_to_window(main->mlx, main->img->rocket_up,
+			main->map->x_player * len, main->map->y_player * len) < 0)
+		return (1);
+		main->img->rocket_up->instances[0].enabled = false;
+	if (mlx_image_to_window(main->mlx, main->img->rocket_down
+			main->map->x_player * len, main->map->y_player * len) < 0)
+		return (1);
+		main->img->rocket_down->instances[0].enabled = false;
+	if (mlx_image_to_window(main->mlx, main->img->rocket_left,
+			main->map->x_player * len, main->map->y_player * len) < 0)
+		return (1);
+		main->img->rocket_left->instances[0].enabled = false;
 	if (mlx_image_to_window(main->mlx, main->img->write, 0, 0) < 0)
 		return (ft_putstr_fd("Error\nPut image fails", 2), 1);
 	return (0);
@@ -107,6 +119,9 @@ int	put_image(t_main *main)
 	main->img->earth_f = construct_image(main, EARTH_F, 1);
 	main->img->rock = construct_image(main, ROCK, 1);
 	main->img->rocket = construct_image(main, ROCKET, 1);
+	main->img->rocket_up = construct_image(main, ROCKET_UP, 1);
+	main->img->rocket_down = construct_image(main, ROCKET_DOWN, 1);
+	main->img->rocket_left = construct_image(main, ROCKET_LEFT, 1);
 	main->img->collect = construct_image(main, COLLECT, 1);
 	main->img->enemy = construct_image(main, ENEMY, 1);
 	main->img->write = construct_write(main, WRITE);
@@ -115,6 +130,9 @@ int	put_image(t_main *main)
 		|| !main->img->earth_f
 		|| !main->img->rock
 		|| !main->img->rocket
+		|| !main->img->rocket_up
+		|| !main->img->rocket_down
+		|| !main->img->rocket_left
 		|| !main->img->collect
 		|| !main->img->mapb
 		|| !main->img->enemy

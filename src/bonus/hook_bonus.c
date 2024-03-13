@@ -6,36 +6,11 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/13 17:47:30 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:48:32 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus/so_long_bonus.h"
-
-static void	ft_exit(t_main *main, int x, int y)
-{
-	int				x_col;
-	int				y_col;
-	char			type;
-	static t_list	*aux;
-
-	x_col = 0;
-	y_col = 0;
-	type = '\0';
-	aux = main->list;
-	if (main->map->ncollect == -1)
-	{
-		while (aux)
-		{
-			x_col = ((t_pos *)aux->content)->x;
-			y_col = ((t_pos *)aux->content)->y;
-			type = ((t_pos *)aux->content)->type;
-			if (x == x_col && y == y_col && (type == 'E'))
-				mlx_close_window(main->mlx);
-			aux = aux->next;
-		}
-	}
-}
 
 static void	is_collectable(t_main *main, int x, int y)
 {
@@ -94,6 +69,33 @@ static int	position_validation(t_main *main, int x, int y)
 	return (1);
 }
 
+static void	player_image(t_main, int x, int y)
+{
+	
+	main->img->rocket->instances[0].enabled = false;
+	main->img->rocket_up->instances[0].enabled = false;
+	main->img->rocket_down->instances[0].enabled = false;
+	main->img->rocket_left->instances[0].enabled = false;
+	if (x == 0 && y < 0)
+		main->img->rocket_up->instances[0].enabled = true;
+	if (x == 0 && y > 0)
+		main->img->rocket_down->instances[0].enabled = true;
+	if (x < 0 && y == 0)
+		main->img->rocket_left->instances[0].enabled = true;
+	if (x > 0 && y == 0)
+		main->img->rocket->instances[0].enabled = true;
+	main->img->rocket->instances[0].y += y;
+	main->img->rocket->instances[0].x += x;
+	main->img->rocket_up->instances[0].y += y;
+	main->img->rocket_up->instances[0].x += x;
+	main->img->rocket_down->instances[0].y += y;
+	main->img->rocket_down->instances[0].x += x;
+	main->img->rocket_left->instances[0].y += y;
+	main->img->rocket_left->instances[0].x += x;
+}
+
+
+
 static void	step(t_main *main, int x, int y)
 {
 	char	*number;
@@ -105,6 +107,13 @@ static void	step(t_main *main, int x, int y)
 		walk_enemy(main);
 		is_enemy(main, main->map->x_player, main->map->y_player);
 		ft_exit(main, main->map->x_player, main->map->y_player);
+		
+		if (x == 0 && y < 0)
+		{
+
+		}
+
+
 		main->img->rocket->instances[0].y += y;
 		main->img->rocket->instances[0].x += x;
 		main->map->step++;

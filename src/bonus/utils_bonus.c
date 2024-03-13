@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:59:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/02/11 18:16:15 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:48:43 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,29 @@ int	count_char_prohibited(t_map *map, char *str)
 	}
 	else
 		return (0);
+}
+
+void	ft_exit(t_main *main, int x, int y)
+{
+	int				x_col;
+	int				y_col;
+	char			type;
+	static t_list	*aux;
+
+	x_col = 0;
+	y_col = 0;
+	type = '\0';
+	aux = main->list;
+	if (main->map->ncollect == -1)
+	{
+		while (aux)
+		{
+			x_col = ((t_pos *)aux->content)->x;
+			y_col = ((t_pos *)aux->content)->y;
+			type = ((t_pos *)aux->content)->type;
+			if (x == x_col && y == y_col && (type == 'E'))
+				mlx_close_window(main->mlx);
+			aux = aux->next;
+		}
+	}
 }
