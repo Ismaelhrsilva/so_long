@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/13 20:07:02 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/13 20:42:02 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,107 @@ static int	position_validation_enemy(t_main *main,  int x, int y)
 		return (0);
 }
 
+/*static void	walk_enemy_path(t_main *main, int x, int y, int n)
+{
+	if (x > main->map->x_player)
+	{
+		if (!position_validation_enemy(main, x - 1, y))
+		{	
+			main->img->enemy->instances[n].x -= main->map->len;
+			((t_pos *)aux->content)->x--;
+			x--;
+		}
+	}
+	if (x < main->map->x_player))
+	{
+		if (!position_validation_enemy(main, x + 1, y))
+		{
+			main->img->enemy->instances[n].x += main->map->len;
+			((t_pos *)aux->content)->x++;
+			x++;
+		}
+	}
+	if (y > main->map->y_player)
+	{
+		if (!position_validation_enemy(main, x, y - 1))
+		{
+			main->img->enemy->instances[n].y -= main->map->len;
+			((t_pos *)aux->content)->y--;
+			y--;
+		}
+	}
+	if (y < main->map->y_player)
+	{
+		if (!position_validation_enemy(main, x, y + 1))
+		{
+			main->img->enemy->instances[n].y += main->map->len;
+			((t_pos *)aux->content)->y++;
+			y++;
+		}
+	}
+}*/
+
 void	walk_enemy(t_main *main)
+{
+	int		x;
+	int		y;
+	char	type;
+	int		n;
+	t_list	*aux;
+
+	//if (main->map->step % 2)
+	//	return ;
+	aux = main->list;
+	while (aux)
+	{
+		x = ((t_pos *)aux->content)->x;
+		y = ((t_pos *)aux->content)->y;
+		type = ((t_pos *)aux->content)->type;
+		n = ((t_pos *)aux->content)->n;
+		if (type == 'A')
+		{
+			if (x > main->map->x_player)
+			{
+				if (!position_validation_enemy(main, x - 1, y))
+				{	
+					main->img->enemy->instances[n].x -= main->map->len;
+					((t_pos *)aux->content)->x--;
+					x--;
+				}
+			}
+			if (x < main->map->x_player)
+			{
+				if (!position_validation_enemy(main, x + 1, y))
+				{
+					main->img->enemy->instances[n].x += main->map->len;
+					((t_pos *)aux->content)->x++;
+					x++;
+				}
+			}
+			if (y > main->map->y_player)
+			{
+				if (!position_validation_enemy(main, x, y - 1))
+				{
+					main->img->enemy->instances[n].y -= main->map->len;
+					((t_pos *)aux->content)->y--;
+					y--;
+				}
+			}
+			if (y < main->map->y_player)
+			{
+				if (!position_validation_enemy(main, x, y + 1))
+				{
+					main->img->enemy->instances[n].y += main->map->len;
+					((t_pos *)aux->content)->y++;
+					y++;
+				}
+			}
+		}
+		aux = aux->next;
+	}
+}
+
+/*void	walk_enemy(t_main *main)
 {
 	int		x;
 	int		y;
@@ -110,7 +210,7 @@ void	walk_enemy(t_main *main)
 				((t_pos *)aux->content)->x--;
 			}
 		}
-		if (x < main->map->x_player && (type == 'A'))
+		else if (x < main->map->x_player && (type == 'A'))
 		{
 			if (!position_validation_enemy(main, x + 1, y))
 			{
@@ -118,7 +218,7 @@ void	walk_enemy(t_main *main)
 				((t_pos *)aux->content)->x++;
 			}
 		}
-		if (y > main->map->y_player && (type == 'A'))
+		else if (y > main->map->y_player && (type == 'A'))
 		{
 			if (!position_validation_enemy(main, x, y - 1))
 			{
@@ -126,61 +226,7 @@ void	walk_enemy(t_main *main)
 				((t_pos *)aux->content)->y--;
 			}
 		}
-		if (y < main->map->y_player && (type == 'A'))
-		{
-			if (!position_validation_enemy(main, x, y + 1))
-			{
-				main->img->enemy->instances[n].y += main->map->len;
-				((t_pos *)aux->content)->y++;
-			}
-		}
-		aux = aux->next;
-	}
-}
-
-/*
-void	walk_enemy(t_main *main)
-{
-	int		x;
-	int		y;
-	char	type;
-	int		n;
-	t_list	*aux;
-
-	//if (main->map->step % 2)
-	//	return ;
-	aux = main->list;
-	while (aux)
-	{
-		x = ((t_pos *)aux->content)->x;
-		y = ((t_pos *)aux->content)->y;
-		type = ((t_pos *)aux->content)->type;
-		n = ((t_pos *)aux->content)->n;
-		if (x > main->map->x_player && x != main->map->x_player && (type == 'A'))
-		{
-			if (!position_validation_enemy(main, x - 1, y))
-			{	
-				main->img->enemy->instances[n].x -= main->map->len;
-				((t_pos *)aux->content)->x--;
-			}
-		}
-		if (x < main->map->x_player && x != main->map->x_player && (type == 'A'))
-		{
-			if (!position_validation_enemy(main, x + 1, y))
-			{
-				main->img->enemy->instances[n].x += main->map->len;
-				((t_pos *)aux->content)->x++;
-			}
-		}
-		if (y > main->map->y_player && y != main->map->y_player && (type == 'A'))
-		{
-			if (!position_validation_enemy(main, x, y - 1))
-			{
-				main->img->enemy->instances[n].y -= main->map->len;
-				((t_pos *)aux->content)->y--;
-			}
-		}
-		if (y < main->map->y_player && y != main->map-> y_player && (type == 'A'))
+		else if (y < main->map->y_player && (type == 'A'))
 		{
 			if (!position_validation_enemy(main, x, y + 1))
 			{
