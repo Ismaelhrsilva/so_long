@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/13 18:48:32 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/13 19:54:35 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	position_validation(t_main *main, int x, int y)
 	return (1);
 }
 
-static void	player_image(t_main, int x, int y)
+static void	player_image(t_main *main, int x, int y)
 {
 	
 	main->img->rocket->instances[0].enabled = false;
@@ -108,14 +108,9 @@ static void	step(t_main *main, int x, int y)
 		is_enemy(main, main->map->x_player, main->map->y_player);
 		ft_exit(main, main->map->x_player, main->map->y_player);
 		
-		if (x == 0 && y < 0)
-		{
-
-		}
-
-
-		main->img->rocket->instances[0].y += y;
-		main->img->rocket->instances[0].x += x;
+		player_image(main, x, y);
+		//main->img->rocket->instances[0].y += y;
+		//main->img->rocket->instances[0].x += x;
 		main->map->step++;
 		if (main->img->write_text)
 			mlx_delete_image(main->mlx, main->img->write_text);

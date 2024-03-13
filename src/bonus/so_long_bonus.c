@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/13 18:42:18 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/13 18:52:37 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,15 +99,15 @@ int	put_image_window(t_main *main)
 	if (mlx_image_to_window(main->mlx, main->img->rocket_up,
 			main->map->x_player * len, main->map->y_player * len) < 0)
 		return (1);
-		main->img->rocket_up->instances[0].enabled = false;
-	if (mlx_image_to_window(main->mlx, main->img->rocket_down
+	main->img->rocket_up->instances[0].enabled = false;
+	if (mlx_image_to_window(main->mlx, main->img->rocket_down,
 			main->map->x_player * len, main->map->y_player * len) < 0)
 		return (1);
-		main->img->rocket_down->instances[0].enabled = false;
+	main->img->rocket_down->instances[0].enabled = false;
 	if (mlx_image_to_window(main->mlx, main->img->rocket_left,
 			main->map->x_player * len, main->map->y_player * len) < 0)
 		return (1);
-		main->img->rocket_left->instances[0].enabled = false;
+	main->img->rocket_left->instances[0].enabled = false;
 	if (mlx_image_to_window(main->mlx, main->img->write, 0, 0) < 0)
 		return (ft_putstr_fd("Error\nPut image fails", 2), 1);
 	return (0);
