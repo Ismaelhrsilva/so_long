@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/12 21:53:34 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:58:52 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	position_validation_enemy(t_main *main, int isrow, int x, int y)
 			return (0);
 		}
 	}
-	else
+	else if (isrow == 1 || isrow == 2)
 	{
 		if (main->map->space[y][x + signal] == '1')
 		{
@@ -69,6 +69,7 @@ static int	position_validation_enemy(t_main *main, int isrow, int x, int y)
 			return (0);
 		}
 	}
+	return (ft_printf("Aquiiiiii\n"));
 }
 
 void	walk_enemy(t_main *main)
