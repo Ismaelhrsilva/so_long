@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/12 21:39:45 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/12 21:53:34 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,28 @@ static int	position_validation_enemy(t_main *main, int isrow, int x, int y)
 	if (isrow == 3 || isrow == 4)
 	{
 		if (main->map->space[y + signal][x] == '1')
+		{
+			ft_printf("Parede --> Vertical\n");
 	  		return (1);
+		}
 		else
+		{
+			ft_printf("Não");
 			return (0);
+		}
 	}
 	else
 	{
 		if (main->map->space[y][x + signal] == '1')
+		{
+			ft_printf("Parede\n");
 			return (1);
+		}
 		else
+		{
+			ft_printf("Não");
 			return (0);
+		}
 	}
 }
 
@@ -67,8 +79,8 @@ void	walk_enemy(t_main *main)
 	int		n;
 	t_list	*aux;
 
-	if (main->map->step % 2)
-		return ;
+	//if (main->map->step % 2)
+	//	return ;
 	aux = main->list;
 	while (aux)
 	{
@@ -86,7 +98,7 @@ void	walk_enemy(t_main *main)
 		}
 		if (x < main->map->x_player && (type == 'A'))
 		{
-			if (position_validation_enemy(main, 0, x, y))
+			if (!position_validation_enemy(main, 2, x, y))
 			{
 				main->img->enemy->instances[n].x += main->map->len;
 				((t_pos *)aux->content)->x++;
@@ -94,7 +106,7 @@ void	walk_enemy(t_main *main)
 		}
 		if (y > main->map->y_player && (type == 'A'))
 		{
-			if (position_validation_enemy(main, 3, x, y))
+			if (!position_validation_enemy(main, 3, x, y))
 			{
 				main->img->enemy->instances[n].y -= main->map->len;
 				((t_pos *)aux->content)->y--;
@@ -102,7 +114,7 @@ void	walk_enemy(t_main *main)
 		}
 		if (y < main->map->y_player && (type == 'A'))
 		{
-			if (position_validation_enemy(main, 4, x, y))
+			if (!position_validation_enemy(main, 4, x, y))
 			{
 				main->img->enemy->instances[n].y += main->map->len;
 				((t_pos *)aux->content)->y++;
