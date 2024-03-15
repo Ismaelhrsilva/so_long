@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 19:59:30 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:21:38 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,47 @@ static void	ft_fire(t_main *main)
 {
 	int	len_x;
 	int	len_y;
-
+	
+	ft_printf("firing - %d\n", main->map->firing);
+	
 	len_x = main->map->x_player * main->map->len;
 	len_y = main->map->y_player * main->map->len;
 	ft_printf("step %d\n", main->map->step);
-	ft_printf("step %d\n", main->map->depth);
+	ft_printf("depth %d\n", main->map->depth);
 	if (main->map->firing == 1)
 	{
-		if (main->map->depth - main->map->step == 3)
+		if (main->map->depth - main->map->step == 3 && main->map->bullets == 1)
+		{
+			ft_printf("passou aquiiiiiiiiiiiii\n");
 			if (mlx_image_to_window(main->mlx, main->img->weapon, len_x, len_y) < 0)
 				return (ft_putstr_fd("Error\nPut image fails", 2));
-		if (main->map->direction == 'r')
-		{
+			main->map->i = main->map->step;
+			main->map->bullets = 0;
+		}
+		//if (main->map->direction == 'r')
+		//{
 			while (main->map->step < main->map->depth)
 			{
-				ft_printf("antes");
-				main->img->weapon->instances[main->map->w].x += 2 * main->map->len;
+				if (main->map->step == main->map->i)
+				{
+					ft_printf("for\n");
+					main->img->weapon->instances[main->map->w].x += 2 * main->map->len;
+					main->map->i++;
+				}
 				ft_printf("%d\n", main->map->w);
 				break ;
 			}
 			if (main->map->step == main->map->depth)
 			{
-				ft_printf("iguais");
+				ft_printf("igual\n");
 				main->img->weapon->instances[main->map->w].enabled = false;
 				main->map->w++;
+				//main->map->bullets = 1;
 				main->map->firing = 0;
 			}
-		}
+		//}
 	}
+	ft_printf("\n\n\n");
 }
 
 static void	is_collectable(t_main *main, int x, int y)
@@ -151,13 +164,13 @@ static void	step(t_main *main, int x, int y)
 	if (position_validation(main, x, y))
 	{
 		is_collectable(main, main->map->x_player, main->map->y_player);
-		ft_fire(main);
 		walk_enemy(main);
 		is_enemy(main, main->map->x_player, main->map->y_player);
 		ft_exit(main, main->map->x_player, main->map->y_player);
 		
 		player_image(main, x, y);
 		main->map->step++;
+		ft_fire(main);
 		if (main->img->write_text)
 			mlx_delete_image(main->mlx, main->img->write_text);
 		number = ft_itoa(main->map->step);
@@ -193,11 +206,11 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 		step(main, len, 0);
 	if (keydata.key == MLX_KEY_P && keydata.action == MLX_PRESS)
 	{
-		ft_printf("firing - %d\n", main->map->firing);
-		if (!main->map->firing)
+		if (main->map->firing == 0)
 		{
 			main->map->depth = main->map->step + 3;
 			main->map->firing = 1;
+			main->map->bullets = 1;
 		}
 		ft_fire(main);
 	}
