@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:55:06 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/13 21:16:01 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:38:07 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,19 @@ static void	ft_weapon(t_main *main)
 		{
 			if (x > main->map->x_player)
 			{
-				if (!position_validation_enemy(main, x - 1, y))
-				{	
-					main->img->enemy->instances[n].x -= main->map->len;
-					((t_pos *)aux->content)->x--;
-					x--;
-				}
+				//if (!position_validation_enemy(main, x - 1, y))
+				//{	
+				if (mlx_image_to_window(main->mlx, main->img->weapon, y, x) < 0)
+				//	return (ft_putstr_fd("Error\nPut image fails", 2), 1);
+				main->img->weapon->instances[0].x -= main->map->len;
+				main->img->weapon->instances[0].x -= main->map->len;
+				main->img->weapon->instances[0].x -= main->map->len;
+				main->img->weapon->instances[0].enabled = false;
+					//((t_pos *)aux->content)->x--;
+					//x--;
+				//}
 			}
+			/*}
 			if (x < main->map->x_player)
 			{
 				if (!position_validation_enemy(main, x + 1, y))
@@ -67,7 +73,7 @@ static void	ft_weapon(t_main *main)
 					((t_pos *)aux->content)->y++;
 					y++;
 				}
-			}
+			}*/
 		}
 		aux = aux->next;
 	}
@@ -82,6 +88,8 @@ void	ft_loop(void *v)
 
 	time = (int )mlx_get_time();
 	main = (t_main *) v;
+	if (time % 4 == 0)
+		ft_weapon(main);	
 	if (main->map->ncollect == -1)
 	{
 		if (time % 2 == 0)

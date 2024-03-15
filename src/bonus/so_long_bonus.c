@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/13 20:51:48 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 16:36:31 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ static int	ft_switch(int r, int c, int l, t_main *main)
 	{
 		if (mlx_image_to_window(main->mlx, main->img->enemy, c * l, h) < 0)
 			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
-		if (mlx_image_to_window(main->mlx, main->img->weapon, c * l, h) < 0)
-			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
+		//if (mlx_image_to_window(main->mlx, main->img->weapon, c * l, h) < 0)
+		//	return (ft_putstr_fd("Error\nPut image fails", 2), 1);
 	}
 	pos_obj(&main->list, c, r, main->map->space[r][c]);
 	return (0);
