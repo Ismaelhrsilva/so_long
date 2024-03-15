@@ -6,13 +6,13 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 16:55:06 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 16:38:07 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:27:41 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus/so_long_bonus.h"
 
-static void	ft_weapon(t_main *main)
+static void	ft_weapon(t_main *main, int time)
 {
 	
 	int		x;
@@ -30,21 +30,15 @@ static void	ft_weapon(t_main *main)
 		y = ((t_pos *)aux->content)->y;
 		type = ((t_pos *)aux->content)->type;
 		n = ((t_pos *)aux->content)->n;
-		if (type == 'A')
+		if (type == 'A' && main->map->walking == 1)
 		{
 			if (x > main->map->x_player)
 			{
-				//if (!position_validation_enemy(main, x - 1, y))
-				//{	
-				if (mlx_image_to_window(main->mlx, main->img->weapon, y, x) < 0)
-				//	return (ft_putstr_fd("Error\nPut image fails", 2), 1);
-				main->img->weapon->instances[0].x -= main->map->len;
-				main->img->weapon->instances[0].x -= main->map->len;
-				main->img->weapon->instances[0].x -= main->map->len;
+				if (mlx_image_to_window(main->mlx, main->img->weapon, x * main->map->len, y * main->map->len) < 0)
+					return (ft_putstr_fd("Error\nPut image fails", 2));
+				main->img->weapon->instances[n].x -=  main->map->len;
+					
 				main->img->weapon->instances[0].enabled = false;
-					//((t_pos *)aux->content)->x--;
-					//x--;
-				//}
 			}
 			/*}
 			if (x < main->map->x_player)
@@ -89,7 +83,7 @@ void	ft_loop(void *v)
 	time = (int )mlx_get_time();
 	main = (t_main *) v;
 	if (time % 4 == 0)
-		ft_weapon(main);	
+		ft_weapon(main, time);	
 	if (main->map->ncollect == -1)
 	{
 		if (time % 2 == 0)

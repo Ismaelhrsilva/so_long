@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 16:17:22 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:26:34 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ static int	position_validation_enemy(t_main *main,  int x, int y)
 		return (1);
 	}
 	else
+	{
+		main->map->walking = 1;
 		return (0);
+	}
 }
 
 
@@ -67,6 +70,7 @@ void	walk_enemy(t_main *main)
 		y = ((t_pos *)aux->content)->y;
 		type = ((t_pos *)aux->content)->type;
 		n = ((t_pos *)aux->content)->n;
+		main->map->walking = 0;
 		if (type == 'A')
 		{
 			if (x > main->map->x_player)
