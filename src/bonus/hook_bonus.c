@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 20:52:06 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:59:13 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,27 @@ static void	ft_fire(t_main *main)
 		{
 			main->map->x_bullet = main->map->x_player;	
 			main->map->y_bullet = main->map->y_player;	
-			len_x_bullet = main->map->x_bullet * main->map->len;
-			len_y_bullet = main->map->y_bullet * main->map->len;
+			main->map->len_x_bullet = main->map->x_bullet * main->map->len;
+			main->map->len_y_bullet = main->map->y_bullet * main->map->len;
 			ft_printf("passou aquiiiiiiiiiiiii\n");
-			if (mlx_image_to_window(main->mlx, main->img->weapon, len_x, len_y) < 0)
+			if (mlx_image_to_window(main->mlx, main->img->weapon, main->map->len_x_bullet, main->map->len_y_bullet) < 0)
 				return (ft_putstr_fd("Error\nPut image fails", 2));
 			main->map->i = main->map->step;
 			main->map->bullets = 0;
+			main->map->bullet_direction = main->map->direction;
 		}
 		while (main->map->step < main->map->depth)
 		{
 			if (main->map->step == main->map->i)
 			{
 				ft_printf("for\n");
-				if (main->map->direction == 'r')
+				if (main->map->bullet_direction == 'r')
 					main->img->weapon->instances[main->map->w].x += 2 * main->map->len;
-				if (main->map->direction == 'l')
+				if (main->map->bullet_direction == 'l')
 					main->img->weapon->instances[main->map->w].x -= 2 * main->map->len;
-				if (main->map->direction == 'u')
+				if (main->map->bullet_direction == 'u')
 					main->img->weapon->instances[main->map->w].y -= 2 * main->map->len;
-				if (main->map->direction == 'd')
+				if (main->map->bullet_direction == 'd')
 					main->img->weapon->instances[main->map->w].y += 2 * main->map->len;
 				main->map->i++;
 			}
