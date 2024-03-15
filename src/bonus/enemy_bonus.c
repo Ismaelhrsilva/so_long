@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 18:26:34 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 19:25:46 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,10 @@ void	is_enemy(t_main *main, int x, int y)
 
 static int	position_validation_enemy(t_main *main,  int x, int y)
 {
-	ft_printf("coluna -- %d\n", x);
-	ft_printf("linha -- %d\n", y);
 	if (main->map->space[y][x] == '1')
-	{
-		//ft_printf("%c\n", main->map->space[y][x]);
 		return (1);
-	}
 	else
-	{
-		main->map->walking = 1;
 		return (0);
-	}
 }
 
 
@@ -70,7 +62,6 @@ void	walk_enemy(t_main *main)
 		y = ((t_pos *)aux->content)->y;
 		type = ((t_pos *)aux->content)->type;
 		n = ((t_pos *)aux->content)->n;
-		main->map->walking = 0;
 		if (type == 'A')
 		{
 			if (x > main->map->x_player)

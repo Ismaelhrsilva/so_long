@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/13 19:54:35 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 19:39:12 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,26 @@ static void	player_image(t_main *main, int x, int y)
 	main->img->rocket_down->instances[0].enabled = false;
 	main->img->rocket_left->instances[0].enabled = false;
 	if (x == 0 && y < 0)
+	{
+		main->map->direction = 'u';
 		main->img->rocket_up->instances[0].enabled = true;
+	}
 	if (x == 0 && y > 0)
+	{
+		main->map->direction = 'd';
 		main->img->rocket_down->instances[0].enabled = true;
+
+	}
 	if (x < 0 && y == 0)
+	{
+		main->map->direction = 'l';
 		main->img->rocket_left->instances[0].enabled = true;
+	}
 	if (x > 0 && y == 0)
+	{
+		main->map->direction = 'r';
 		main->img->rocket->instances[0].enabled = true;
+	}
 	main->img->rocket->instances[0].y += y;
 	main->img->rocket->instances[0].x += x;
 	main->img->rocket_up->instances[0].y += y;
@@ -109,8 +122,6 @@ static void	step(t_main *main, int x, int y)
 		ft_exit(main, main->map->x_player, main->map->y_player);
 		
 		player_image(main, x, y);
-		//main->img->rocket->instances[0].y += y;
-		//main->img->rocket->instances[0].x += x;
 		main->map->step++;
 		if (main->img->write_text)
 			mlx_delete_image(main->mlx, main->img->write_text);
@@ -126,6 +137,25 @@ static void	step(t_main *main, int x, int y)
 		free(join);
 	}
 }
+
+static void	ft_fire(t_main *main)
+{
+	if (main->map->firing == 1)
+	{
+		if (mlx_image_to_window(main->mlx, main->img->weapon, main->map->x_player, main->map->y_player) < 0)
+			return (ft_putstr_fd("Error\nPut image fails", 2));
+		if (main->map->direction == 'r')
+		{
+			while (main->map->step < main->map->depth)
+			{
+				main->img->weapon->instances[main->map->w].x += 2 * main->map->len;
+			}
+			if (main->map->step == main->map->depth)
+				main->map->firing = 0;
+		}
+	}
+}
+
 
 void	ft_hook(mlx_key_data_t keydata, void *param)
 {
@@ -144,4 +174,13 @@ void	ft_hook(mlx_key_data_t keydata, void *param)
 		step(main, -len, 0);
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 		step(main, len, 0);
+	if (keydata.key == MLX_KEY_P && keydata.action == MLX_PRESS)
+	{
+		if (!main->map->firing)
+		{
+			main->map->depth = main->map->step + 3;
+			main->map->firing = 1;
+		}
+		ft_fire(main);
+	}
 }

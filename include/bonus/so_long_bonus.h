@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 18:25:12 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 19:33:03 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,11 @@ typedef struct s_map
 	int		step;
 	int		row_v;
 
-	int		walking;
+	int		depth;
 	int		firing;
+	int		w;
+	int		bullets;
+	char	direction;
 }	t_map;
 
 typedef struct s_main
