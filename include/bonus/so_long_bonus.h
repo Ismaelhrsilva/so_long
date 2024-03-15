@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 20:15:59 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:50:39 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,10 @@ typedef struct s_map
 	int		w;
 	int		i;
 	int		bullets;
+	int		x_bullet;
+	int		y_bullet;
+	int		len_x_bullet;
+	int		len_y_bullet;
 	char	direction;
 }	t_map;
 
