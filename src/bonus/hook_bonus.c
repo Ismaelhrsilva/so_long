@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 20:21:38 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 20:23:44 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,14 @@ static void	ft_fire(t_main *main)
 				if (main->map->step == main->map->i)
 				{
 					ft_printf("for\n");
-					main->img->weapon->instances[main->map->w].x += 2 * main->map->len;
+					if (main->map->direction == 'r')
+						main->img->weapon->instances[main->map->w].x += 2 * main->map->len;
+					if (main->map->direction == 'l')
+						main->img->weapon->instances[main->map->w].x -= 2 * main->map->len;
+					if (main->map->direction == 'u')
+						main->img->weapon->instances[main->map->w].y -= 2 * main->map->len;
+					if (main->map->direction == 'd')
+						main->img->weapon->instances[main->map->w].y += 2 * main->map->len;
 					main->map->i++;
 				}
 				ft_printf("%d\n", main->map->w);
@@ -51,7 +58,6 @@ static void	ft_fire(t_main *main)
 				ft_printf("igual\n");
 				main->img->weapon->instances[main->map->w].enabled = false;
 				main->map->w++;
-				//main->map->bullets = 1;
 				main->map->firing = 0;
 			}
 		//}
