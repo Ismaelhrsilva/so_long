@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 21:23:46 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:24:50 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,12 @@ typedef struct s_map
 	int		len_y_bullet;
 	char	bullet_direction;
 	char	direction;
-	t_list	*aux_died;
 }	t_map;
 
 typedef struct s_main
 {
 	t_list	*list;
+	t_list	*aux_died;
 	t_img	*img;
 	t_map	*map;
 	mlx_t	*mlx;

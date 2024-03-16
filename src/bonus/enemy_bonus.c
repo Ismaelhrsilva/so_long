@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 21:23:42 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:27:13 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	is_enemy(t_main *main, int x, int y)
 		y_col = ((t_pos *)aux->content)->y;
 		type = ((t_pos *)aux->content)->type;
 		n = ((t_pos *)aux->content)->n;
-		if (x == x_col && y == y_col && (type == 'A'))
+		if (x == x_col && y == y_col && (type == 'A') && ((t_pos *)aux->content)->died == 1)
 		{
 			mlx_close_window(main->mlx);
 		}
@@ -57,8 +57,8 @@ void	enemy_dies(t_main *main)
 			main->aux_died = main->list;
 			while (main->aux_died)
 			{
-				if (main->aux_died->content->n == n && main->aux_died->content->type == 'a')
-					main->aux_died->content->died = 1;
+				if (((t_pos *)main->aux_died->content)->n == n && ((t_pos *)main->aux_died->content)->type == 'a')
+					((t_pos *)main->aux_died->content)->died = 1;
 				main->aux_died = main->aux_died->next;
 			}
 		}
