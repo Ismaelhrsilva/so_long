@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 21:01:21 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:09:06 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,10 @@ static void	step(t_main *main, int x, int y)
 		walk_enemy(main);
 		is_enemy(main, main->map->x_player, main->map->y_player);
 		ft_exit(main, main->map->x_player, main->map->y_player);
-		
 		player_image(main, x, y);
 		main->map->step++;
 		ft_fire(main);
+	
 		if (main->img->write_text)
 			mlx_delete_image(main->mlx, main->img->write_text);
 		number = ft_itoa(main->map->step);
