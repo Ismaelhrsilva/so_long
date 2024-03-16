@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 21:13:12 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:23:42 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	is_enemy(t_main *main, int x, int y)
 	}
 }
 
-static void	enemy_dies(t_main *main)
+void	enemy_dies(t_main *main)
 {
 	int		x_col;
 	int		y_col;
@@ -54,6 +54,13 @@ static void	enemy_dies(t_main *main)
 		{
 			main->img->enemy->instances[n].enabled = false;
 			((t_pos *)aux->content)->n = 'a';
+			main->aux_died = main->list;
+			while (main->aux_died)
+			{
+				if (main->aux_died->content->n == n && main->aux_died->content->type == 'a')
+					main->aux_died->content->died = 1;
+				main->aux_died = main->aux_died->next;
+			}
 		}
 		aux = aux->next;
 	}

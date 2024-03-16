@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 21:01:39 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:23:46 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_pos
 	int		x;
 	int		y;
 	char	type;
+	int		died;
 }	t_pos;
 
 typedef struct s_img
@@ -92,6 +93,7 @@ typedef struct s_map
 	int		len_y_bullet;
 	char	bullet_direction;
 	char	direction;
+	t_list	*aux_died;
 }	t_map;
 
 typedef struct s_main
@@ -125,5 +127,6 @@ void		ft_loop(void *v);
 void	walk_enemy(t_main *main);
 void	ft_exit(t_main *main, int x, int y);
 void	ft_fire(t_main *main);
+void	enemy_dies(t_main *main);
 
 #endif
