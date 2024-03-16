@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 21:27:13 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:43:35 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	is_enemy(t_main *main, int x, int y)
 	int		y_col;
 	char	type;
 	int		n;
+	int		died;
 	t_list	*aux;
 
 	aux = main->list;
@@ -27,7 +28,8 @@ void	is_enemy(t_main *main, int x, int y)
 		y_col = ((t_pos *)aux->content)->y;
 		type = ((t_pos *)aux->content)->type;
 		n = ((t_pos *)aux->content)->n;
-		if (x == x_col && y == y_col && (type == 'A') && ((t_pos *)aux->content)->died == 1)
+		died = ((t_pos *)aux->content)->died == 1;
+		if (x == x_col && y == y_col && (type == 'A') && died == 1)
 		{
 			mlx_close_window(main->mlx);
 		}
@@ -92,7 +94,7 @@ void	walk_enemy(t_main *main)
 		y = ((t_pos *)aux->content)->y;
 		type = ((t_pos *)aux->content)->type;
 		n = ((t_pos *)aux->content)->n;
-		if (type == 'A')
+		if (type == 'A' && ((t_pos *)aux->content)->died != 1)
 		{
 			if (x > main->map->x_player)
 			{

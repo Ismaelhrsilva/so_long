@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 21:07:49 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:31:21 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ static void	ft_shooting(t_main *main)
 			ft_printf("for\n");
 			if (main->map->bullet_direction == 'r')
 			{
-				main->map->x_bullet++;
+				main->map->x_bullet += 2;
 				main->img->weapon->instances[main->map->w].x += 2 * main->map->len;
 			}
 			if (main->map->bullet_direction == 'l')
 			{
-				main->map->x_bullet--;
+				main->map->x_bullet-= 2;
 				main->img->weapon->instances[main->map->w].x -= 2 * main->map->len;
 			}
 			if (main->map->bullet_direction == 'u')
 			{
-				main->map->y_bullet--;
+				main->map->y_bullet-= 2;
 				main->img->weapon->instances[main->map->w].y -= 2 * main->map->len;
 			}
 			if (main->map->bullet_direction == 'd')
 			{
-				main->map->y_bullet++;
+				main->map->y_bullet+= 2;
 				main->img->weapon->instances[main->map->w].y += 2 * main->map->len;
 			}
 			main->map->i++;
