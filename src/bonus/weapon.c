@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 21:04:29 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/15 21:07:49 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,25 @@ static void	ft_shooting(t_main *main)
 		{
 			ft_printf("for\n");
 			if (main->map->bullet_direction == 'r')
+			{
+				main->map->x_bullet++;
 				main->img->weapon->instances[main->map->w].x += 2 * main->map->len;
+			}
 			if (main->map->bullet_direction == 'l')
+			{
+				main->map->x_bullet--;
 				main->img->weapon->instances[main->map->w].x -= 2 * main->map->len;
+			}
 			if (main->map->bullet_direction == 'u')
+			{
+				main->map->y_bullet--;
 				main->img->weapon->instances[main->map->w].y -= 2 * main->map->len;
+			}
 			if (main->map->bullet_direction == 'd')
+			{
+				main->map->y_bullet++;
 				main->img->weapon->instances[main->map->w].y += 2 * main->map->len;
+			}
 			main->map->i++;
 		}
 		ft_printf("%d\n", main->map->w);
@@ -62,31 +74,6 @@ void	ft_fire(t_main *main)
 			main->map->bullets = 0;
 			main->map->bullet_direction = main->map->direction;
 		}
-		/*while (main->map->step < main->map->depth)
-		{
-			if (main->map->step == main->map->i)
-			{
-				ft_printf("for\n");
-				if (main->map->bullet_direction == 'r')
-					main->img->weapon->instances[main->map->w].x += 2 * main->map->len;
-				if (main->map->bullet_direction == 'l')
-					main->img->weapon->instances[main->map->w].x -= 2 * main->map->len;
-				if (main->map->bullet_direction == 'u')
-					main->img->weapon->instances[main->map->w].y -= 2 * main->map->len;
-				if (main->map->bullet_direction == 'd')
-					main->img->weapon->instances[main->map->w].y += 2 * main->map->len;
-				main->map->i++;
-			}
-			ft_printf("%d\n", main->map->w);
-			break ;
-		}
-		if (main->map->step == main->map->depth)
-		{
-			ft_printf("igual\n");
-			main->img->weapon->instances[main->map->w].enabled = false;
-			main->map->w++;
-			main->map->firing = 0;
-		}*/
 		ft_shooting(main);
 	}
 	ft_printf("\n\n\n");
