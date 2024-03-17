@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/16 21:44:20 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:49:41 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,41 +88,33 @@ void	walk_enemy(t_main *main)
 		n = ((t_pos *)aux->content)->n;
 		if (type == 'A')
 		{
-			if (x > main->map->x_player)
+			if (x > main->map->x_player
+				&& !position_validation_enemy(main, x - 1, y))
 			{
-				if (!position_validation_enemy(main, x - 1, y))
-				{
 					main->img->enemy->instances[n].x -= main->map->len;
 					((t_pos *)aux->content)->x--;
 					x--;
-				}
 			}
-			if (x < main->map->x_player)
+			if (x < main->map->x_player
+				&& !position_validation_enemy(main, x + 1, y))
 			{
-				if (!position_validation_enemy(main, x + 1, y))
-				{
 					main->img->enemy->instances[n].x += main->map->len;
 					((t_pos *)aux->content)->x++;
 					x++;
-				}
 			}
-			if (y > main->map->y_player)
+			if (y > main->map->y_player
+				&& !position_validation_enemy(main, x, y - 1))
 			{
-				if (!position_validation_enemy(main, x, y - 1))
-				{
 					main->img->enemy->instances[n].y -= main->map->len;
 					((t_pos *)aux->content)->y--;
 					y--;
-				}
 			}
-			if (y < main->map->y_player)
+			if (y < main->map->y_player
+				&& !position_validation_enemy(main, x, y + 1))
 			{
-				if (!position_validation_enemy(main, x, y + 1))
-				{
 					main->img->enemy->instances[n].y += main->map->len;
 					((t_pos *)aux->content)->y++;
 					y++;
-				}
 			}
 		}
 		aux = aux->next;
