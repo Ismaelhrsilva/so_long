@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/16 21:25:36 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:28:09 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,9 @@ int	put_image_window(t_main *main)
 	int		row;
 	int		col;
 	int		len;
-	int		n_collect;
-	t_pos	*pos;
 
-	n_collect = 0;
 	row = 0;
 	len = main->map->len;
-	//mlx_image_to_window(main->mlx, main->img->mapb, 0, 0);
 	if (whiling(row, col, len, main))
 		return (1);
 	if ((mlx_image_to_window(main->mlx, main->img->rocket,
