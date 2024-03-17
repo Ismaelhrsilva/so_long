@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 21:46:58 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:14:37 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ static int	position_validation(t_main *main, int x, int y)
 
 static void	player_image(t_main *main, int x, int y)
 {
-	
 	main->img->rocket->instances[0].enabled = false;
 	main->img->rocket_up->instances[0].enabled = false;
 	main->img->rocket_down->instances[0].enabled = false;
@@ -85,7 +84,6 @@ static void	player_image(t_main *main, int x, int y)
 	{
 		main->map->direction = 'd';
 		main->img->rocket_down->instances[0].enabled = true;
-
 	}
 	if (x < 0 && y == 0)
 	{
@@ -107,8 +105,6 @@ static void	player_image(t_main *main, int x, int y)
 	main->img->rocket_left->instances[0].x += x;
 }
 
-
-
 static void	step(t_main *main, int x, int y)
 {
 	char	*number;
@@ -116,7 +112,7 @@ static void	step(t_main *main, int x, int y)
 
 	if (position_validation(main, x, y))
 	{
-		enemy_dies(main);	
+		enemy_dies(main);
 		is_collectable(main, main->map->x_player, main->map->y_player);
 		walk_enemy(main);
 		is_enemy(main, main->map->x_player, main->map->y_player);
@@ -138,7 +134,6 @@ static void	step(t_main *main, int x, int y)
 		free(join);
 	}
 }
-
 
 void	ft_hook(mlx_key_data_t keydata, void *param)
 {

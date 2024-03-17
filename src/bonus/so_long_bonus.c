@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 18:04:53 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:25:36 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ static int	ft_switch(int r, int c, int l, t_main *main)
 	{
 		if (mlx_image_to_window(main->mlx, main->img->enemy, c * l, h) < 0)
 			return (ft_putstr_fd("Error\nPut image fails", 2), 1);
-		//if (mlx_image_to_window(main->mlx, main->img->weapon, c * l, h) < 0)
-		//	return (ft_putstr_fd("Error\nPut image fails", 2), 1);
 	}
 	pos_obj(&main->list, c, r, main->map->space[r][c]);
 	return (0);
@@ -69,6 +67,7 @@ static int	ft_switch(int r, int c, int l, t_main *main)
 
 static int	whiling(int row, int col, int len, t_main *main)
 {
+	mlx_image_to_window(main->mlx, main->img->mapb, 0, 0);
 	while (row < main->map->nrow)
 	{
 		col = 0;
@@ -94,26 +93,22 @@ int	put_image_window(t_main *main)
 	n_collect = 0;
 	row = 0;
 	len = main->map->len;
-	mlx_image_to_window(main->mlx, main->img->mapb, 0, 0);
+	//mlx_image_to_window(main->mlx, main->img->mapb, 0, 0);
 	if (whiling(row, col, len, main))
 		return (1);
-	if (mlx_image_to_window(main->mlx, main->img->rocket,
-			main->map->x_player * len, main->map->y_player * len) < 0)
-		return (1);
-	if (mlx_image_to_window(main->mlx, main->img->rocket_up,
-			main->map->x_player * len, main->map->y_player * len) < 0)
-		return (1);
-	main->img->rocket_up->instances[0].enabled = false;
-	if (mlx_image_to_window(main->mlx, main->img->rocket_down,
-			main->map->x_player * len, main->map->y_player * len) < 0)
-		return (1);
-	main->img->rocket_down->instances[0].enabled = false;
-	if (mlx_image_to_window(main->mlx, main->img->rocket_left,
-			main->map->x_player * len, main->map->y_player * len) < 0)
-		return (1);
-	main->img->rocket_left->instances[0].enabled = false;
-	if (mlx_image_to_window(main->mlx, main->img->write, 0, 0) < 0)
+	if ((mlx_image_to_window(main->mlx, main->img->rocket,
+				main->map->x_player * len, main->map->y_player * len) < 0)
+		|| (mlx_image_to_window(main->mlx, main->img->rocket_up,
+				main->map->x_player * len, main->map->y_player * len) < 0)
+		|| (mlx_image_to_window(main->mlx, main->img->rocket_down,
+				main->map->x_player * len, main->map->y_player * len) < 0)
+		|| (mlx_image_to_window(main->mlx, main->img->rocket_left,
+				main->map->x_player * len, main->map->y_player * len) < 0)
+		|| (mlx_image_to_window(main->mlx, main->img->write, 0, 0) < 0))
 		return (ft_putstr_fd("Error\nPut image fails", 2), 1);
+	main->img->rocket_up->instances[0].enabled = false;
+	main->img->rocket_down->instances[0].enabled = false;
+	main->img->rocket_left->instances[0].enabled = false;
 	return (0);
 }
 
@@ -131,17 +126,11 @@ int	put_image(t_main *main)
 	main->img->weapon = construct_image(main, WEAPON, 1);
 	main->img->write = construct_write(main, WRITE);
 	main->img->mapb = construct_image(main, MAPB, 0);
-	if (!main->img->earth
-		|| !main->img->earth_f
-		|| !main->img->rock
-		|| !main->img->rocket
-		|| !main->img->rocket_up
-		|| !main->img->rocket_down
-		|| !main->img->rocket_left
-		|| !main->img->collect
-		|| !main->img->mapb
-		|| !main->img->enemy
-		|| !main->img->write
+	if (!main->img->earth || !main->img->earth_f || !main->img->rock
+		|| !main->img->rocket || !main->img->rocket_up
+		|| !main->img->rocket_down || !main->img->rocket_left
+		|| !main->img->collect || !main->img->mapb
+		|| !main->img->enemy || !main->img->write
 		|| put_image_window(main))
 		return (1);
 	else
