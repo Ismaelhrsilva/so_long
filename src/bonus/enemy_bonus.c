@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/16 21:10:29 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:44:20 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	is_enemy(t_main *main, int x, int y)
 	int		y_col;
 	char	type;
 	int		n;
-	int		died;
 	t_list	*aux;
 
 	aux = main->list;
@@ -28,8 +27,7 @@ void	is_enemy(t_main *main, int x, int y)
 		y_col = ((t_pos *)aux->content)->y;
 		type = ((t_pos *)aux->content)->type;
 		n = ((t_pos *)aux->content)->n;
-		died = ((t_pos *)aux->content)->died;
-		if (x == x_col && y == y_col && (type == 'A') && died != 1)
+		if (x == x_col && y == y_col && (type == 'A'))
 		{
 			mlx_close_window(main->mlx);
 		}
@@ -52,23 +50,17 @@ void	enemy_dies(t_main *main)
 		y_col = ((t_pos *)aux->content)->y;
 		type = ((t_pos *)aux->content)->type;
 		n = ((t_pos *)aux->content)->n;
-		if (main->map->x_bullet == x_col && main->map->y_bullet == y_col && (type == 'A'))
+		if (main->map->x_bullet == x_col
+			&& main->map->y_bullet == y_col && (type == 'A'))
 		{
 			main->img->enemy->instances[n].enabled = false;
 			((t_pos *)aux->content)->type = 'a';
-			main->aux_died = main->list;
-			while (main->aux_died)
-			{
-				if (((t_pos *)main->aux_died->content)->n == n && ((t_pos *)main->aux_died->content)->type == 'a')
-					((t_pos *)main->aux_died->content)->died = 1;
-				main->aux_died = main->aux_died->next;
-			}
 		}
 		aux = aux->next;
 	}
 }
 
-static int	position_validation_enemy(t_main *main,  int x, int y)
+static int	position_validation_enemy(t_main *main, int x, int y)
 {
 	if (main->map->space[y][x] == '1')
 		return (1);
@@ -83,7 +75,6 @@ void	walk_enemy(t_main *main)
 	int		y;
 	char	type;
 	int		n;
-	int		died;
 	t_list	*aux;
 
 	if (main->map->step % 2)
@@ -95,12 +86,12 @@ void	walk_enemy(t_main *main)
 		y = ((t_pos *)aux->content)->y;
 		type = ((t_pos *)aux->content)->type;
 		n = ((t_pos *)aux->content)->n;
-		if (type == 'A' )
+		if (type == 'A')
 		{
 			if (x > main->map->x_player)
 			{
 				if (!position_validation_enemy(main, x - 1, y))
-				{	
+				{
 					main->img->enemy->instances[n].x -= main->map->len;
 					((t_pos *)aux->content)->x--;
 					x--;
