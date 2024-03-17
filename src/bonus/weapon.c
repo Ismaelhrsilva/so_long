@@ -6,11 +6,35 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/16 21:31:13 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:35:23 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus/so_long_bonus.h"
+
+static void	ft_bullet_pos(t_main *main, int len)
+{
+	if (main->map->bullet_direction == 'r')
+	{
+		main->map->x_bullet += 2;
+		main->img->weapon->instances[main->map->w].x += 2 * len;
+	}
+	if (main->map->bullet_direction == 'l')
+	{
+		main->map->x_bullet -= 2;
+		main->img->weapon->instances[main->map->w].x -= 2 * len;
+	}
+	if (main->map->bullet_direction == 'u')
+	{
+		main->map->y_bullet -= 2;
+		main->img->weapon->instances[main->map->w].y -= 2 * len;
+	}
+	if (main->map->bullet_direction == 'd')
+	{
+		main->map->y_bullet += 2;
+		main->img->weapon->instances[main->map->w].y += 2 * len;
+	}
+}
 
 static void	ft_shooting(t_main *main, int len)
 {
@@ -18,26 +42,7 @@ static void	ft_shooting(t_main *main, int len)
 	{
 		if (main->map->step == main->map->i)
 		{
-			if (main->map->bullet_direction == 'r')
-			{
-				main->map->x_bullet += 2;
-				main->img->weapon->instances[main->map->w].x += 2 * len;
-			}
-			if (main->map->bullet_direction == 'l')
-			{
-				main->map->x_bullet -= 2;
-				main->img->weapon->instances[main->map->w].x -= 2 * len;
-			}
-			if (main->map->bullet_direction == 'u')
-			{
-				main->map->y_bullet -= 2;
-				main->img->weapon->instances[main->map->w].y -= 2 * len;
-			}
-			if (main->map->bullet_direction == 'd')
-			{
-				main->map->y_bullet += 2;
-				main->img->weapon->instances[main->map->w].y += 2 * len;
-			}
+			ft_bullet_pos(main, len);
 			main->map->i++;
 		}
 		break ;
@@ -49,7 +54,6 @@ static void	ft_shooting(t_main *main, int len)
 		main->map->firing = 0;
 	}
 }
-
 
 void	ft_fire(t_main *main)
 {
