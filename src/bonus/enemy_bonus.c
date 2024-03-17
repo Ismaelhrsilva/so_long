@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/15 21:45:02 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:08:45 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	enemy_dies(t_main *main)
 		if (main->map->x_bullet == x_col && main->map->y_bullet == y_col && (type == 'A'))
 		{
 			main->img->enemy->instances[n].enabled = false;
-			((t_pos *)aux->content)->n = 'a';
+			((t_pos *)aux->content)->type = 'a';
 			main->aux_died = main->list;
 			while (main->aux_died)
 			{
@@ -83,6 +83,7 @@ void	walk_enemy(t_main *main)
 	int		y;
 	char	type;
 	int		n;
+	int		died;
 	t_list	*aux;
 
 	if (main->map->step % 2)
@@ -94,7 +95,8 @@ void	walk_enemy(t_main *main)
 		y = ((t_pos *)aux->content)->y;
 		type = ((t_pos *)aux->content)->type;
 		n = ((t_pos *)aux->content)->n;
-		if (type == 'A' && ((t_pos *)aux->content)->died != 1)
+		//died = ((t_pos *)aux->content)->died;
+		if (type == 'A' )
 		{
 			if (x > main->map->x_player)
 			{
