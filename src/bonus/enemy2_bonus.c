@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/18 17:57:39 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:17:37 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ void	walk_enemy(t_main *main)
 	int		n;
 	t_list	*aux;
 
+	if (main->map->step % 2 == 0)
+		return ;
 	aux = main->list;
 	while (aux)
 	{

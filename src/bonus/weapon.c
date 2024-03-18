@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/18 18:00:19 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:18:20 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static void	ft_shooting(t_main *main, int len)
 		main->img->weapon->instances[main->map->w].enabled = false;
 		main->map->w++;
 		main->map->firing = 0;
+		main->map->x_bullet = 0;
+		main->map->y_bullet = 0;
 	}
 }
 
