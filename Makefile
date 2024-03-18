@@ -6,7 +6,7 @@
 #    By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 20:08:54 by ishenriq          #+#    #+#              #
-#    Updated: 2024/03/18 18:35:37 by ishenriq         ###   ########.fr        #
+#    Updated: 2024/03/18 19:12:11 by ishenriq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,10 @@ SRCS_BONUS	+= $(addprefix src/bonus/, close_bonus.c \
 OBJS	+=  $(SRCS:%.c=$(BUILD_DIR)%.o)
 OBJS_BONUS	+= $(SRCS_BONUS:%.c=$(BUILD_DIR)%.o)
 
+DELETE	=	$(OBJS_BONUS)
+
 ifdef   WITH_BONUS
+		DELETE := $(OBJS)
 		OBJS = $(OBJS_BONUS)
 endif
 
@@ -69,6 +72,7 @@ endef
 all: libmlx libft printf $(NAME)
 
 $(BUILD_DIR)%.o: %.c
+	@rm -rf $(DELETE)
 	$(call create_dir)
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)"
 
@@ -89,12 +93,10 @@ bonus:
 
 clean:
 	@rm -rf $(BUILD_DIR)
-	@rm -rf $(LIBMLX)/build
-	@make -C $(LIBFT) clean
-	@make -C $(PRINTF) clean
 
 fclean: clean
 	@rm -rf $(NAME)
+	@rm -rf $(LIBMLX)/build
 	@make -C $(LIBFT) fclean
 	@make -C $(PRINTF) fclean
 
