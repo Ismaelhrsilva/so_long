@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 18:02:42 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/16 21:28:09 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:30:19 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	put_image_window(t_main *main)
 	int		col;
 	int		len;
 
+	col = 0;
 	row = 0;
 	len = main->map->len;
 	if (whiling(row, col, len, main))
