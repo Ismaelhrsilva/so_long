@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:24:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/18 17:51:21 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:57:39 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,41 +58,27 @@ static int	ft_aux_walk_enemy_up(t_main *main, int x, int y, int n)
 
 void	walk_enemy(t_main *main)
 {
-	int		x;
-	int		y;
 	char	type;
 	int		n;
 	t_list	*aux;
 
-	if (main->map->step % 2)
-		return ;
 	aux = main->list;
 	while (aux)
 	{
-		x = ((t_pos *)aux->content)->x;
-		y = ((t_pos *)aux->content)->y;
 		type = ((t_pos *)aux->content)->type;
 		n = ((t_pos *)aux->content)->n;
-		if (type == 'A' && ft_aux_walk_enemy_right(main, x, y, n))
-		{
+		if (type == 'A' && ft_aux_walk_enemy_right(main,
+				((t_pos *)aux->content)->x, ((t_pos *)aux->content)->y, n))
 			((t_pos *)aux->content)->x--;
-			x--;
-		}
-		if (type == 'A' && ft_aux_walk_enemy_left(main, x, y, n))
-		{
+		if (type == 'A' && ft_aux_walk_enemy_left(main,
+				((t_pos *)aux->content)->x, ((t_pos *)aux->content)->y, n))
 			((t_pos *)aux->content)->x++;
-			x++;
-		}
-		if (type == 'A' && ft_aux_walk_enemy_down(main, x, y, n))
-		{
+		if (type == 'A' && ft_aux_walk_enemy_down(main,
+				((t_pos *)aux->content)->x, ((t_pos *)aux->content)->y, n))
 			((t_pos *)aux->content)->y--;
-			y--;
-		}
-		if (type == 'A' && ft_aux_walk_enemy_up(main, x, y, n))
-		{
+		if (type == 'A' && ft_aux_walk_enemy_up(main,
+				((t_pos *)aux->content)->x, ((t_pos *)aux->content)->y, n))
 			((t_pos *)aux->content)->y++;
-			y++;
-		}
 		aux = aux->next;
 	}
 }
