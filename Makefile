@@ -6,7 +6,7 @@
 #    By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 20:08:54 by ishenriq          #+#    #+#              #
-#    Updated: 2024/03/18 18:34:47 by ishenriq         ###   ########.fr        #
+#    Updated: 2024/03/18 18:35:37 by ishenriq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,6 @@ printf:
 
 $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
-
 
 bonus:
 	$(call bonus)
