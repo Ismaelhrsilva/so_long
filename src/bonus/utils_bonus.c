@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 19:59:20 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/13 18:48:43 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:03:56 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,34 @@ void	ft_exit(t_main *main, int x, int y)
 				mlx_close_window(main->mlx);
 			aux = aux->next;
 		}
+	}
+}
+
+void	is_collectable(t_main *main, int x, int y)
+{
+	int		x_col;
+	int		y_col;
+	char	type;
+	int		n;
+	t_list	*aux;
+
+	aux = main->list;
+	while (aux)
+	{
+		x_col = ((t_pos *)aux->content)->x;
+		y_col = ((t_pos *)aux->content)->y;
+		type = ((t_pos *)aux->content)->type;
+		n = ((t_pos *)aux->content)->n;
+		if (x == x_col && y == y_col && (type == 'C'))
+		{
+			if (main->img->collect->instances[n].enabled == true)
+			{
+				main->img->collect->instances[n].enabled = false;
+				main->map->ncollect--;
+				if (main->map->ncollect == 0)
+					main->map->ncollect = -1;
+			}
+		}
+		aux = aux->next;
 	}
 }

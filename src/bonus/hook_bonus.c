@@ -6,39 +6,35 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/16 21:14:37 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:08:10 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "bonus/so_long_bonus.h"
 
-static void	is_collectable(t_main *main, int x, int y)
+static void	ft_aux_player_image(t_main *main, int x, int y)
 {
-	int		x_col;
-	int		y_col;
-	char	type;
-	int		n;
-	t_list	*aux;
-
-	aux = main->list;
-	while (aux)
+	if (x == 0 && y < 0)
 	{
-		x_col = ((t_pos *)aux->content)->x;
-		y_col = ((t_pos *)aux->content)->y;
-		type = ((t_pos *)aux->content)->type;
-		n = ((t_pos *)aux->content)->n;
-		if (x == x_col && y == y_col && (type == 'C'))
-		{
-			if (main->img->collect->instances[n].enabled == true)
-			{
-				main->img->collect->instances[n].enabled = false;
-				main->map->ncollect--;
-				if (main->map->ncollect == 0)
-					main->map->ncollect = -1;
-			}
-		}
-		aux = aux->next;
+		main->map->direction = 'u';
+		main->img->rocket_up->instances[0].enabled = true;
 	}
+	if (x == 0 && y > 0)
+	{
+		main->map->direction = 'd';
+		main->img->rocket_down->instances[0].enabled = true;
+	}
+	if (x < 0 && y == 0)
+	{
+		main->map->direction = 'l';
+		main->img->rocket_left->instances[0].enabled = true;
+	}
+	if (x > 0 && y == 0)
+	{
+		main->map->direction = 'r';
+		main->img->rocket->instances[0].enabled = true;
+	}
+	main->map->step++;
 }
 
 static int	position_validation(t_main *main, int x, int y)
@@ -75,26 +71,7 @@ static void	player_image(t_main *main, int x, int y)
 	main->img->rocket_up->instances[0].enabled = false;
 	main->img->rocket_down->instances[0].enabled = false;
 	main->img->rocket_left->instances[0].enabled = false;
-	if (x == 0 && y < 0)
-	{
-		main->map->direction = 'u';
-		main->img->rocket_up->instances[0].enabled = true;
-	}
-	if (x == 0 && y > 0)
-	{
-		main->map->direction = 'd';
-		main->img->rocket_down->instances[0].enabled = true;
-	}
-	if (x < 0 && y == 0)
-	{
-		main->map->direction = 'l';
-		main->img->rocket_left->instances[0].enabled = true;
-	}
-	if (x > 0 && y == 0)
-	{
-		main->map->direction = 'r';
-		main->img->rocket->instances[0].enabled = true;
-	}
+	ft_aux_player_image(main, x, y);
 	main->img->rocket->instances[0].y += y;
 	main->img->rocket->instances[0].x += x;
 	main->img->rocket_up->instances[0].y += y;
@@ -118,7 +95,6 @@ static void	step(t_main *main, int x, int y)
 		is_enemy(main, main->map->x_player, main->map->y_player);
 		ft_exit(main, main->map->x_player, main->map->y_player);
 		player_image(main, x, y);
-		main->map->step++;
 		ft_fire(main);
 		if (main->img->write_text)
 			mlx_delete_image(main->mlx, main->img->write_text);

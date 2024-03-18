@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 17:26:44 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/16 21:35:23 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:00:19 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,3 @@ void	ft_fire(t_main *main)
 		ft_shooting(main, main->map->len);
 	}
 }
-
