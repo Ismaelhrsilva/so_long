@@ -6,7 +6,7 @@
 /*   By: ishenriq <ishenriq@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 19:42:09 by ishenriq          #+#    #+#             */
-/*   Updated: 2024/03/16 21:14:54 by ishenriq         ###   ########.fr       */
+/*   Updated: 2024/03/18 17:49:56 by ishenriq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ void		walk_enemy(t_main *main);
 void		ft_exit(t_main *main, int x, int y);
 void		ft_fire(t_main *main);
 void		enemy_dies(t_main *main);
+int			position_validation_enemy(t_main *main, int x, int y);
 
 #endif
